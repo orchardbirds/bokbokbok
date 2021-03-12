@@ -16,7 +16,7 @@ def WeightedCrossEntropyMetric(alpha=0.5):
 
         """
         y = dtrain.get_label()
-        yhat[yhat == 1] = 1 - 1e-6
+        yhat[yhat >= 1] = 1 - 1e-6
         yhat[yhat <= 0] = 1e-6
         elements = alpha * y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
         return 'WCE', (np.sum(elements) * -1 / len(y)), False

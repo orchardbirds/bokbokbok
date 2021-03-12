@@ -55,7 +55,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
             grad: Weighted cross-entropy gradient
             hess: Weighted cross-entropy Hessian
         """
-        yhat[yhat == 1] = 1 - 1e-6
+        yhat[yhat >= 1] = 1 - 1e-6
         yhat[yhat <= 0] = 1e-6
         grad = _gradient(yhat, dtrain, alpha=alpha)
 
