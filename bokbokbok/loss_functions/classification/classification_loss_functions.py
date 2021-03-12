@@ -3,6 +3,9 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     Calculates the Weighted Cross-Entropy Loss, which applies
     a factor alpha to the regular Cross-Entropy Loss.
     """
+    if alpha == 1.0:
+        raise UserWarning('Using alpha == 1, it is better to use the already existing Cross Entropy Metric')
+
     def _gradient(yhat, dtrain, alpha):
         """Compute the weighted cross-entropy gradient.
 
@@ -55,7 +58,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
             grad: Weighted cross-entropy gradient
             hess: Weighted cross-entropy Hessian
         """
-        yhat[yhat == 1] = 1 - 1e-6
+        yhat[yhat >= 1] = 1 - 1e-6
         yhat[yhat <= 0] = 1e-6
         grad = _gradient(yhat, dtrain, alpha=alpha)
 

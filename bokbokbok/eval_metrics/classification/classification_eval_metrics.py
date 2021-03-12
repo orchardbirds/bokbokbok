@@ -2,6 +2,10 @@ import numpy as np
 
 
 def WeightedCrossEntropyMetric(alpha=0.5):
+
+    if alpha == 1.0:
+        raise UserWarning('Using alpha == 1, it is better to use the already existing Cross Entropy Metric')
+
     def weighted_cross_entropy_metric(yhat, dtrain, alpha=alpha):
         """
         Weighted Cross Entropy Metric.
@@ -16,7 +20,7 @@ def WeightedCrossEntropyMetric(alpha=0.5):
 
         """
         y = dtrain.get_label()
-        yhat[yhat == 1] = 1 - 1e-6
+        yhat[yhat >= 1] = 1 - 1e-6
         yhat[yhat <= 0] = 1e-6
         elements = alpha * y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
         return 'WCE', (np.sum(elements) * -1 / len(y)), False
