@@ -2,6 +2,10 @@ import numpy as np
 
 
 def WeightedCrossEntropyMetric(alpha=0.5):
+
+    if alpha == 1.0:
+        raise UserWarning('Using alpha == 1, it is better to use the already existing Cross Entropy Metric')
+
     def weighted_cross_entropy_metric(yhat, dtrain, alpha=alpha):
         """
         Weighted Cross Entropy Metric.
