@@ -1,10 +1,17 @@
-before_script:
-  - python -V               # Print out python version for debugging
-  - virtualenv venv
-  - source venv/bin/activate
+stages:
+  - build
+  - test
+
+before:
+  stage: build
+  script:
+    - python -V
+    - virtualenv venv
+    - source venv/bin/activate
 
 # tags make sure correct public gitlab runner is picked
-test:
+test_code:
+  stage: test
   script:
     - export PIP_EXTRA_INDEX_URL=https://artifactory.ing.net/artifactory/api/pypi/pypipublic/simple
     - export PIP_TRUSTED_HOST=artifactory.ing.net
