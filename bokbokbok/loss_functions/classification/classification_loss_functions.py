@@ -1,16 +1,19 @@
+import numpy as np
+
+
 def WeightedCrossEntropyLoss(alpha=0.5):
     """
     Calculates the Weighted Cross-Entropy Loss, which applies
     a factor alpha to the regular Cross-Entropy Loss.
     """
-    if alpha == 1.0:
+    if float(alpha) == 1.0:
         raise UserWarning('Using alpha == 1, it is better to use the already existing Cross Entropy Metric')
 
     def _gradient(yhat, dtrain, alpha):
         """Compute the weighted cross-entropy gradient.
 
         Args:
-            yhat (np.array): Predictions
+            yhat (np.array): Margin predictions
             dtrain: The XGBoost / LightGBM dataset
             alpha (float): Scale applied
 
@@ -19,25 +22,29 @@ def WeightedCrossEntropyLoss(alpha=0.5):
         """
         y = dtrain.get_label()
 
-        grad = (-alpha * y / yhat) + ((1 - y) / (1 - yhat))
+        yhat = 1. / (1. + np.exp(-yhat))
+        yhat[yhat >= 1] = 1 - 1e-6
+        yhat[yhat <= 0] = 1e-6
+
+        grad = yhat - (y * alpha)
 
         return grad
 
-    def _hessian(yhat, dtrain, alpha):
+    def _hessian(yhat):
         """Compute the weighted cross-entropy hessian.
 
         Args:
-            yhat (np.array): Predictions
-            dtrain: The XGBoost / LightGBM dataset
-            alpha (float): Scale applied
+            yhat (np.array): Margin predictions
 
         Returns:
             hess: Weighted cross-entropy Hessian
         """
 
-        y = dtrain.get_label()
+        yhat = 1. / (1. + np.exp(-yhat))
+        yhat[yhat >= 1] = 1 - 1e-6
+        yhat[yhat <= 0] = 1e-6
 
-        hess = (alpha * y / yhat ** 2) + ((1 - y) / (1 - yhat) ** 2)
+        hess = yhat * (1 - yhat)
 
         return hess
 
@@ -58,11 +65,9 @@ def WeightedCrossEntropyLoss(alpha=0.5):
             grad: Weighted cross-entropy gradient
             hess: Weighted cross-entropy Hessian
         """
-        yhat[yhat >= 1] = 1 - 1e-6
-        yhat[yhat <= 0] = 1e-6
         grad = _gradient(yhat, dtrain, alpha=alpha)
 
-        hess = _hessian(yhat, dtrain, alpha=alpha)
+        hess = _hessian(yhat)
 
         return grad, hess
 

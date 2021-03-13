@@ -20,6 +20,7 @@ def WeightedCrossEntropyMetric(alpha=0.5):
 
         """
         y = dtrain.get_label()
+        yhat = 1. / (1. + np.exp(-yhat))
         yhat[yhat >= 1] = 1 - 1e-6
         yhat[yhat <= 0] = 1e-6
         elements = alpha * y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
