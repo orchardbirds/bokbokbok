@@ -1,10 +1,8 @@
 import numpy as np
+from bokbokbok.utils import clip_sigmoid
 
 
 def WeightedCrossEntropyMetric(alpha=0.5):
-
-    if alpha == 1.0:
-        raise UserWarning('Using alpha == 1, it is better to use the already existing Cross Entropy Metric')
 
     def weighted_cross_entropy_metric(yhat, dtrain, alpha=alpha):
         """
@@ -20,10 +18,37 @@ def WeightedCrossEntropyMetric(alpha=0.5):
 
         """
         y = dtrain.get_label()
-        yhat = 1. / (1. + np.exp(-yhat))
-        yhat[yhat >= 1] = 1 - 1e-6
-        yhat[yhat <= 0] = 1e-6
+        yhat = clip_sigmoid(yhat)
         elements = alpha * y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
-        return 'WCE', (np.sum(elements) * -1 / len(y)), False
+        return f'WCE_alpha{alpha}', (np.sum(elements) * -1 / len(y)), False
 
     return weighted_cross_entropy_metric
+
+
+def FocalMetric(alpha=1.0, gamma=2.0):
+    """
+    Implements alpha-weighted Focal Loss taken from https://arxiv.org/pdf/1708.02002.pdf
+    """
+
+    def focal_metric(yhat, dtrain, alpha=alpha, gamma=gamma):
+        """
+        Weighted Focal Loss Metric.
+
+        Args:
+            yhat: Predictions
+            dtrain: The XGBoost / LightGBM dataset
+            alpha (float): Scale applied
+            gamma (float): Focusing parameter
+
+        Returns:
+            Name of the eval metric, Eval score, Bool to minimise function
+
+        """
+        y = dtrain.get_label()
+        yhat = clip_sigmoid(yhat)
+
+        L1 = alpha * y * np.log(yhat) * np.power(1 - yhat, gamma)
+        L2 = (1 - y) * np.log(1 - yhat) *  np.power(yhat, gamma)
+        return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(L1 + L2) * -1 / len(y)), False
+
+    return focal_metric
