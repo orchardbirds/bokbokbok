@@ -13,8 +13,6 @@ before:
 test_code:
   stage: test
   script:
-    - export PIP_EXTRA_INDEX_URL=https://artifactory.ing.net/artifactory/api/pypi/pypipublic/simple
-    - export PIP_TRUSTED_HOST=artifactory.ing.net
     - pip install --upgrade setuptools
     - pip install ".[all]"
     - flake8 --max-line-length=120 --docstring-convention=google --ignore=D100,D104,D212,D200,E203,W293,D412,W503 bokbokbok
