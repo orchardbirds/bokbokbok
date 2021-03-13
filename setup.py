@@ -4,10 +4,18 @@ from setuptools import setup, find_packages
 #     long_description = fh.read()
 
 base_packages = [
-    "pandas>=1.1.2",
+    "numpy>=1.19.2",
     "scikit-learn>=0.23.2",
 ]
 
+dev_dep = [
+    "flake8>=3.8.3",
+    "black>=19.10b0",
+    "pre-commit>=2.5.0",
+    "mypy>=0.770",
+    "flake8-docstrings>=1.4.0" "pytest>=6.0.0",
+    "pytest-cov>=2.10.0",
+]
 
 
 setup(
@@ -33,6 +41,7 @@ setup(
     install_requires=base_packages,
     extras_require={
         "base": base_packages,
+        "all": base_packages + dev_dep
     },
     url="https://github.com/orchardbirds/bokbokbok",
     packages=find_packages(".", exclude=["tests", "notebooks", "docs"]),
