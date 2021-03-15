@@ -1,0 +1,64 @@
+site_name: bokbokbok doks
+
+repo_url: https://github.com/orchardbirds/bokbokbok/
+site_url: https://orchardbirds.github.io/bokbokbok/
+site_description: Implementing Custom Loss Functions and Eval Metrics in LightGBM and XGBoost
+site_author: Daniel Timbrell
+
+use_directory_urls: false
+
+nav:
+  - Home: index.md
+  - Derivations:
+      - General Remarks: derivations/note.md
+      - Weighted Cross Entropy: derivations/wce.md
+      - Focal Loss: derivations/focal.md
+
+plugins:
+  - mkdocstrings:
+      handlers:
+          python:
+            selection:
+              inherited_members: true
+              filters:
+                - "!^Base"
+                - "!^_"  # exlude all members starting with _
+                - "^__init__$"  # but always include __init__ modules and methods
+            rendering:
+              show_root_toc_entry: false
+      watch:
+        - bokbokbok
+  - search
+  - mknotebooks:
+      enable_default_jupyter_cell_styling: true
+      enable_default_pandas_dataframe_styling: true
+
+copyright: Copyright &copy; 2020
+
+theme:
+  name: material
+  logo: img/bokbokbok.png
+  favicon: img/bokbokbok.png
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
+  features:
+    - navigation.tabs
+  palette:
+    scheme: default
+    primary: deep orange
+    accent: indigo
+
+
+markdown_extensions:
+  - codehilite
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      use_pygments: true
+  - toc:
+      permalink: true
