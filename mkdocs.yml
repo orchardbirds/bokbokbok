@@ -46,8 +46,8 @@ theme:
     - navigation.tabs
   palette:
     scheme: default
-    primary: deep orange
-    accent: indigo
+    primary: pink
+    accent: blue
 
 
 markdown_extensions:
