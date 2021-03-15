@@ -23,23 +23,25 @@ def WeightedCrossEntropyLoss(alpha=0.5):
 
         yhat = clip_sigmoid(yhat)
 
-        grad = yhat - (y * alpha)
+        grad = y * yhat * (alpha - 1) + yhat - alpha * y
 
         return grad
 
-    def _hessian(yhat):
+    def _hessian(yhat, dtrain, alpha):
         """Compute the weighted cross-entropy hessian.
 
         Args:
             yhat (np.array): Margin predictions
+            dtrain: The XGBoost / LightGBM dataset
+            alpha (float): Scale applied
 
         Returns:
             hess: Weighted cross-entropy Hessian
         """
-
+        y = dtrain.get_label()
         yhat = clip_sigmoid(yhat)
 
-        hess = yhat * (1 - yhat)
+        hess = (y * (alpha - 1) + 1) * yhat * (1 - yhat)
 
         return hess
 
@@ -62,7 +64,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
         """
         grad = _gradient(yhat, dtrain, alpha=alpha)
 
-        hess = _hessian(yhat)
+        hess = _hessian(yhat, dtrain, alpha=alpha)
 
         return grad, hess
 
@@ -94,12 +96,9 @@ def FocalLoss(alpha=1.0, gamma=2.0):
 
         yhat = clip_sigmoid(yhat)
 
-        L1 = alpha * gamma * y * yhat * np.log(yhat) * np.power((1 - yhat), gamma)
-        L2 = -1. * alpha * y * np.power((1 - yhat), gamma + 1)
-        L3 = -1. * gamma * (1 - y) * np.power(yhat, gamma) * np.log(1 - yhat) * (1 - yhat)
-        L4 = (1 - y) * np.power(yhat, gamma + 1)
+        grad = alpha * y * np.power(1 - yhat, gamma) * (gamma + yhat * np.log(yhat) + yhat - 1) + \
+               (1 - y) * np.power(yhat, gamma) * (gamma * (yhat - 1) * np.log(1 - yhat) + yhat)
 
-        grad = L1 + L2 + L3 + L4
 
         return grad
 
@@ -119,16 +118,9 @@ def FocalLoss(alpha=1.0, gamma=2.0):
 
         yhat = clip_sigmoid(yhat)
 
-        L1 = alpha * gamma * y * yhat * np.power(1 - yhat, gamma + 1) * np.log(yhat)
-        L2 = alpha * gamma * y * yhat * np.power(1 - yhat, gamma + 1)
-        L3 = -1. * alpha * np.power(gamma, 2) * y * np.power(yhat, 2) * np.power(1 - yhat, gamma) * np.log(yhat)
-        L4 = alpha * y * (gamma + 1) * yhat * np.power(1 - yhat, gamma + 1)
-        L5 = -1. * np.power(gamma, 2) * (1 - y) * np.power(yhat, gamma) * np.log(1 - yhat) * np.power(1 - yhat, 2)
-        L6 = gamma * (1 - y) * np.power(yhat, gamma + 1) * (1 - yhat)
-        L7 = gamma * (1 - y) * np.power(yhat, gamma + 1) * np.log(1 - yhat) * (1 - yhat)
-        L8 = (gamma + 1) * (1 - y) * np.power(yhat, gamma + 1) * (1 - yhat)
-
-        hess = L1 + L2 + L3 + L4 + L5 + L6 + L7 + L8
+        hess = alpha * y * yhat * np.power(1 - y, gamma) * (gamma * (1 - yhat) * np.log(yhat) + 2 * gamma * (1 - yhat) -
+                                                            np.power(gamma, 2) * yhat * np.log(yhat) + 1 - yhat) + \
+               (1 - y) * np.power(yhat, gamma + 1) * (1 - yhat) * (2 * gamma + gamma * (np.log(1 - yhat)) + 1)
         return hess
 
     def focal_loss(
