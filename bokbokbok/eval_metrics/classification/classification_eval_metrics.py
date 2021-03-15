@@ -19,8 +19,8 @@ def WeightedCrossEntropyMetric(alpha=0.5):
         """
         y = dtrain.get_label()
         yhat = clip_sigmoid(yhat)
-        elements = alpha * y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
-        return f'WCE_alpha{alpha}', (np.sum(elements) * -1 / len(y)), False
+        elements = - alpha * y * np.log(yhat) - (1 - y) * np.log(1 - yhat)
+        return f'WCE_alpha{alpha}', (np.sum(elements) / len(y)), False
 
     return weighted_cross_entropy_metric
 
@@ -47,8 +47,8 @@ def FocalMetric(alpha=1.0, gamma=2.0):
         y = dtrain.get_label()
         yhat = clip_sigmoid(yhat)
 
-        L1 = alpha * y * np.log(yhat) * np.power(1 - yhat, gamma)
-        L2 = (1 - y) * np.log(1 - yhat) *  np.power(yhat, gamma)
-        return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(L1 + L2) * -1 / len(y)), False
+        elements = (- alpha * y * np.log(yhat) * np.power(1 - yhat, gamma) -
+                    (1 - y) * np.log(1 - yhat) *  np.power(yhat, gamma))
+        return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements)/ len(y)), False
 
     return focal_metric

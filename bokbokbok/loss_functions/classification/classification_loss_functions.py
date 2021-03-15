@@ -96,9 +96,10 @@ def FocalLoss(alpha=1.0, gamma=2.0):
 
         yhat = clip_sigmoid(yhat)
 
-        grad = alpha * y * np.power(1 - yhat, gamma) * (gamma + yhat * np.log(yhat) + yhat - 1) + \
-               (1 - y) * np.power(yhat, gamma) * (gamma * (yhat - 1) * np.log(1 - yhat) + yhat)
-
+        grad = (
+                alpha * y * np.power(1 - yhat, gamma) * (gamma * yhat * np.log(yhat) + yhat - 1) +
+                (1 - y) * np.power(yhat, gamma) * (yhat - gamma * np.log(1 - yhat) * (1 - yhat))
+                )
 
         return grad
 
@@ -118,9 +119,13 @@ def FocalLoss(alpha=1.0, gamma=2.0):
 
         yhat = clip_sigmoid(yhat)
 
-        hess = alpha * y * yhat * np.power(1 - y, gamma) * (gamma * (1 - yhat) * np.log(yhat) + 2 * gamma * (1 - yhat) -
-                                                            np.power(gamma, 2) * yhat * np.log(yhat) + 1 - yhat) + \
-               (1 - y) * np.power(yhat, gamma + 1) * (1 - yhat) * (2 * gamma + gamma * (np.log(1 - yhat)) + 1)
+        hess = (
+                alpha * y * yhat * np.power(1 - y,
+                                            gamma) * (gamma * (1 - yhat) * np.log(yhat) + 2 * gamma * (1 - yhat) -
+                                                      np.power(gamma, 2) * yhat * np.log(yhat) + 1 - yhat) +
+                (1 - y) * np.power(yhat, gamma + 1) * (1 - yhat) * (2 * gamma + gamma * (np.log(1 - yhat)) + 1)
+                )
+
         return hess
 
     def focal_loss(
