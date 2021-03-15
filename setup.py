@@ -17,6 +17,19 @@ dev_dep = [
     "pytest-cov>=2.10.0",
 ]
 
+docs_dep = [
+    "mkdocs-material>=6.1.0",
+    "mkdocs-git-revision-date-localized-plugin>=0.7.2",
+    "mkdocs-git-authors-plugin>=0.3.2",
+    "mkdocs-table-reader-plugin>=0.4.1",
+    "mkdocs-enumerate-headings-plugin>=0.4.3",
+    "mkdocs-awesome-pages-plugin>=2.4.0",
+    "mkdocs-minify-plugin>=0.3.0",
+    "mknotebooks>=0.6.2",
+    "mkdocstrings>=0.13.6",
+    "mkdocs-print-site-plugin>=0.8.2",
+    "mkdocs-markdownextradata-plugin>=0.1.9",
+]
 
 setup(
     name="bokbokbok",
@@ -41,7 +54,7 @@ setup(
     install_requires=base_packages,
     extras_require={
         "base": base_packages,
-        "all": base_packages + dev_dep
+        "all": base_packages + dev_dep + docs_dep
     },
     url="https://github.com/orchardbirds/bokbokbok",
     packages=find_packages(".", exclude=["tests", "notebooks", "docs"]),
