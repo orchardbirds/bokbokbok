@@ -17,6 +17,7 @@ nav:
       - Weighted Cross Entropy: derivations/wce.md
       - Focal Loss: derivations/focal.md
       - Squared Log Error: derivations/sle.md
+      - Log Cosh Error: derivations/log_cosh.md
 
 plugins:
   - mkdocstrings:
