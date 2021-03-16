@@ -16,6 +16,7 @@ nav:
       - General Remarks: derivations/note.md
       - Weighted Cross Entropy: derivations/wce.md
       - Focal Loss: derivations/focal.md
+      - Squared Log Error: derivations/sle.md
 
 plugins:
   - mkdocstrings:
