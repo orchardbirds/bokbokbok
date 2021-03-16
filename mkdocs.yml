@@ -11,6 +11,7 @@ nav:
   - Home: index.md
   - Tutorials:
       - Weighted Cross Entropy: tutorials/weighted_cross_entropy.ipynb
+      - Focal Loss: tutorials/focal_loss.ipynb
   - Derivations:
       - General Remarks: derivations/note.md
       - Weighted Cross Entropy: derivations/wce.md
