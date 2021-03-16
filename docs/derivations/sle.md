@@ -1,6 +1,6 @@
 ## Squared Log Error
 
-The equations for Squared Log Error is:
+The equation for Squared Log Error is:
 
 <img src="https://latex.codecogs.com/svg.latex?L_{SLE}&space;=&space;\frac{1}{2}(\log(\hat{y}&space;&plus;&space;1)&space;-&space;\log(y&space;&plus;&space;1))^{2}" title="L_{SLE} = \frac{1}{2}(\log(\hat{y} + 1) - \log(y + 1))^{2}" />
 
