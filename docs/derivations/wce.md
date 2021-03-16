@@ -1,8 +1,8 @@
 ## Weighted Cross Entropy Loss
 
-Weighted Cross Entropy applies a scaling parameter $\alpha$  to [Binary Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression),
+Weighted Cross Entropy applies a scaling parameter *alpha*  to [Binary Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression),
 allowing us to penalise false positives or false negatives more harshly. If you want false
-positives to be penalised more than false negatives, $\alpha$ must be greater than 1. Otherwise,
+positives to be penalised more than false negatives, *alpha* must be greater than 1. Otherwise,
 it must be less than 1. 
 
 The equations for Binary and Weighted Cross Entropy Loss are the following:

@@ -1,6 +1,6 @@
 ## Weighted Focal Loss
 
-Weighted Focal Loss applies a scaling parameter $\alpha$ and a focusing parameter $\gamma$ to [Binary Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression)
+Weighted Focal Loss applies a scaling parameter *alpha* and a focusing parameter *gamma* to [Binary Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression)
 
 We take the definition of the Focal Loss from [this paper](https://arxiv.org/pdf/1708.02002.pdf):
 
