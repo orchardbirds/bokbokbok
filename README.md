@@ -16,6 +16,7 @@ Main features:
 - Focal Loss
 - Squared Log Error
 - Log Cosh Loss
+- F1 score
 
 ## Installation
 
