@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-# with open("README.md", "r", encoding="UTF-8") as fh:
-#     long_description = fh.read()
+with open("README.md", "r", encoding="UTF-8") as fh:
+    long_description = fh.read()
 
 base_packages = [
     "numpy>=1.19.2",
@@ -33,9 +33,9 @@ docs_dep = [
 
 setup(
     name="bokbokbok",
-    version="0.1",
+    version="0.2",
     description="Custom Losses and Metrics for XGBoost, LightGBM, CatBoost",
-    #long_description=long_description,
+    long_description=long_description,
     long_description_content_type="text/markdown",
     author="Daniel Timbrell",
     author_email="dantimbrell@gmail.com",
