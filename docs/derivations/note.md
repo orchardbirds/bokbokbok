@@ -17,6 +17,6 @@ The Hessian is similarly calculated:
 
 <img src="https://latex.codecogs.com/svg.latex?\hat{y}&space;=&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;e^{-z}}" title="\hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}" />
 
-We will make use of the following property for the calculations of the Losses and Hessians:
+We will make use of the following property for the calculations of the Gradients and Hessians:
 
 <img src="https://latex.codecogs.com/svg.latex?\frac{\partial&space;\hat{y}}{\partial&space;z}&space;=&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})" title="\frac{\partial \hat{y}}{\partial z} = \hat{y} \cdot (1 - \hat{y})" />
