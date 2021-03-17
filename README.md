@@ -1,5 +1,9 @@
 <img src="https://github.com/orchardbirds/bokbokbok/raw/main/docs/img/bokbokbok.png" width="120" align="right">
 
+[![PyPi Version](https://img.shields.io/pypi/pyversions/bokbokbok)](#)
+[![PyPI](https://img.shields.io/pypi/v/bokbokbok)](#)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/bokbokbok)](#)
+
 
 # bokbokbok
 
@@ -12,6 +16,7 @@ Main features:
 - Focal Loss
 - Squared Log Error
 - Log Cosh Loss
+- F1 score
 
 ## Installation
 

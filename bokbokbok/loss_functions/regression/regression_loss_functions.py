@@ -62,6 +62,7 @@ def SquaredLogErrorLoss():
 
 def LogCoshLoss():
     """
+    An alternative to Mean Absolute Error.
     """
 
     def _gradient(yhat, dtrain):

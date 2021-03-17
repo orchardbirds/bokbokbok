@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.metrics import f1_score
 from bokbokbok.utils import clip_sigmoid
 
 
@@ -69,11 +70,44 @@ def FocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
         yhat = clip_sigmoid(yhat)
 
         elements = (- alpha * y * np.log(yhat) * np.power(1 - yhat, gamma) -
-                    (1 - y) * np.log(1 - yhat) *  np.power(yhat, gamma))
+                    (1 - y) * np.log(1 - yhat) * np.power(yhat, gamma))
 
         if XGBoost:
             return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements) / len(y))
         else:
-            return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements)/ len(y)), False
+            return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements) / len(y)), False
 
     return focal_metric
+
+
+def F1_Score_Binary(XGBoost=False, *args, **kwargs):
+    """
+    Implements the f1_score metric from scikit learn:
+    https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn-metrics-f1-score
+
+    Args:
+        *args: The arguments to be fed into the scikit learn metric.
+        XGBoost (Bool): Set to True if using XGBoost. We assume LightGBM as default use.
+                        Note that you should also set `maximize=True` in the XGBoost train function
+
+    """
+    def binary_f1_score(yhat, data, XGBoost=XGBoost):
+        """
+        F1 Score.
+
+        Args:
+            yhat: Predictions
+            dtrain: The XGBoost / LightGBM dataset
+            XGBoost (Bool): If XGBoost is to be implemented
+
+        Returns:
+            Name of the eval metric, Eval score, Bool to maximise function
+        """
+        y_true = data.get_label()
+        yhat = np.round(yhat)
+        if XGBoost:
+            return 'F1', f1_score(y_true, yhat, *args, **kwargs)
+        else:
+            return 'F1', f1_score(y_true, yhat, *args, **kwargs), True
+
+    return binary_f1_score

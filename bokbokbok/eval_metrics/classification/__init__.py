@@ -1,12 +1,14 @@
 """Import required metrics."""
 
 
-from .classification_eval_metrics import(
+from .classification_eval_metrics import (
     WeightedCrossEntropyMetric,
     FocalMetric,
+    F1_Score_Binary,
 )
 
 __all__ = [
     "WeightedCrossEntropyMetric",
-    "FocalMetric"
+    "FocalMetric",
+    "F1_Score_Binary"
 ]

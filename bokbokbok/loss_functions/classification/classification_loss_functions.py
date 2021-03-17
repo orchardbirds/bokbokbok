@@ -23,7 +23,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
 
         yhat = clip_sigmoid(yhat)
 
-        grad = y * yhat * (alpha - 1) + yhat - alpha * y
+        grad = (y * yhat * (alpha - 1)) + yhat - (alpha * y)
 
         return grad
 
