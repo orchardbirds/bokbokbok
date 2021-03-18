@@ -15,6 +15,8 @@ dev_dep = [
     "mypy>=0.770",
     "flake8-docstrings>=1.4.0" "pytest>=6.0.0",
     "pytest-cov>=2.10.0",
+    "lightgbm>=3.0.0",
+    "xgboost>=1.3.3",
 ]
 
 docs_dep = [

@@ -4,7 +4,7 @@ import numpy as np
 def clip_sigmoid(yhat):
     """
     Applies the sigmoid function and ensures that the values lie in the range
-    1e-15 < x < 1 - 1e-15.
+    1e-15 < yhat < 1 - 1e-15.
     We clip to avoid dividing by zero in the loss functions.
 
     Args:
@@ -17,6 +17,3 @@ def clip_sigmoid(yhat):
     yhat[yhat >= 1] = 1 - 1e-15
     yhat[yhat <= 0] = 1e-15
     return yhat
-
-def say_hello():
-    return "hi"

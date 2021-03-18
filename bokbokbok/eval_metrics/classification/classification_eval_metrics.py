@@ -40,7 +40,7 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
     return weighted_cross_entropy_metric
 
 
-def FocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
+def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
     """
     Implements alpha-weighted Focal Loss taken from https://arxiv.org/pdf/1708.02002.pdf
 

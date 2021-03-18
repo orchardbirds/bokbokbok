@@ -3,10 +3,10 @@
 
 from .classification_loss_functions import (
     WeightedCrossEntropyLoss,
-    FocalLoss,
+    WeightedFocalLoss,
 )
 
 __all__ = [
     "WeightedCrossEntropyLoss",
-    "FocalLoss"
+    "WeightedFocalLoss"
 ]
