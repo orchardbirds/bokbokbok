@@ -13,7 +13,7 @@
 Main features:
 
 - Weighted Cross Entropy
-- Focal Loss
+- Weighted Focal Loss
 - Squared Log Error
 - Log Cosh Loss
 - F1 score
