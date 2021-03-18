@@ -6,7 +6,7 @@
 
 ## Installation
 
-In order to install bokbokbok you need to use Python 3.6 or higher.
+In order to install bokbokbok you need to use Python 3.7 or higher.
 
 Install `bokbokbok` via pip with:
 
