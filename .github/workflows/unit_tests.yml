@@ -16,7 +16,7 @@ jobs:
         include:
           - build: macos
             os: macos-latest
-            SKIP_LIGHTGBM: True
+            SKIP_LIGHTGBM: False
           - build: ubuntu
             os: ubuntu-latest
             SKIP_LIGHTGBM: False
