@@ -23,5 +23,5 @@ pip install .
 ```
 
 ## Licence
-todo
+bokbokbok is created under the MIT License, see more in the LICENSE file
 
