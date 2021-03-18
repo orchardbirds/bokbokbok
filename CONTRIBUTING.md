@@ -23,7 +23,13 @@ Starting out with open source? See the guide [How to Contribute to Open Source](
 Development install:
 
 ```shell
-pip install -e 'bokbokbok[all]'
+pip install -e '.[all]'
+```
+
+Run unit tests with
+
+```shell
+pytest
 ```
 
 ## Standards
