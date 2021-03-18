@@ -17,3 +17,6 @@ def clip_sigmoid(yhat):
     yhat[yhat >= 1] = 1 - 1e-15
     yhat[yhat <= 0] = 1e-15
     return yhat
+
+def say_hello():
+    return "hi"
