@@ -71,7 +71,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     return weighted_cross_entropy
 
 
-def FocalLoss(alpha=1.0, gamma=2.0):
+def WeightedFocalLoss(alpha=1.0, gamma=2.0):
     """
     Calculates the Weighted Focal Loss, see
     https://arxiv.org/pdf/1708.02002.pdf
