@@ -5,7 +5,12 @@ from bokbokbok.utils import clip_sigmoid
 
 def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
     """
-    Calculates the Weighted Cross Entropy Metric by applying a weighting factor alpha.
+    Calculates the Weighted Cross Entropy Metric by applying a weighting factor alpha, allowing one to
+    trade off recall and precision by up- or down-weighting the cost of a positive error relative to a
+    negative error.
+
+    A value alpha > 1 decreases the false negative count, hence increasing the recall.
+    Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
 
     Args:
         alpha (float): The scale to be applied.
@@ -43,6 +48,11 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
 def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
     """
     Implements alpha-weighted Focal Loss taken from https://arxiv.org/pdf/1708.02002.pdf
+
+    The more gamma is increased, the more the model is focussed on the hard, misclassified examples.
+
+    A value alpha > 1 decreases the false negative count, hence increasing the recall.
+    Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
 
     Args:
         alpha (float): The scale to be applied.

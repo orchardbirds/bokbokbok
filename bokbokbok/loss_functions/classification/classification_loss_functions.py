@@ -4,8 +4,12 @@ from bokbokbok.utils import clip_sigmoid
 
 def WeightedCrossEntropyLoss(alpha=0.5):
     """
-    Calculates the Weighted Cross-Entropy Loss, which applies
-    a factor alpha to the regular Cross-Entropy Loss.
+    Calculates the Weighted Cross-Entropy Loss, which applies a factor alpha, allowing one to
+    trade off recall and precision by up- or down-weighting the cost of a positive error relative
+    to a negative error.
+
+    A value alpha > 1 decreases the false negative count, hence increasing the recall.
+    Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
     """
 
     def _gradient(yhat, dtrain, alpha):
@@ -75,8 +79,13 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
     """
     Calculates the Weighted Focal Loss, see
     https://arxiv.org/pdf/1708.02002.pdf
-    Note that if using alpha =1 and gamma = 0,
-    this is the same as using regular Cross Entropy
+    Note that if using alpha = 1 and gamma = 0,
+    this is the same as using regular Cross Entropy.
+
+    The more gamma is increased, the more the model is focussed on the hard, misclassified examples.
+
+    A value alpha > 1 decreases the false negative count, hence increasing the recall.
+    Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
 
     """
 

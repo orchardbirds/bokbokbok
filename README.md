@@ -12,11 +12,11 @@
 **bokbokbok** is a python package that enables you to use Custom Loss Functions and Evaluation Metrics for XGBoost and LightGBM.
 Main features:
 
-- Weighted Cross Entropy
-- Weighted Focal Loss
+- [Weighted Cross Entropy](https://orchardbirds.github.io/bokbokbok/tutorials/weighted_cross_entropy.html)
+- [Weighted Focal Loss](https://orchardbirds.github.io/bokbokbok/tutorials/focal_loss.html)
 - Squared Log Error
 - Log Cosh Loss
-- F1 score
+- [F1 score](https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html)
 
 ## Installation
 
