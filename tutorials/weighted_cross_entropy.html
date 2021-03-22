@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usage-in-lightgbm" class="md-skip">
+        <a href="#when-to-use-weighted-cross-entropy" class="md-skip">
           Skip to content
         </a>
       
@@ -391,6 +391,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#when-to-use-weighted-cross-entropy" class="md-nav__link">
+    When to use Weighted Cross Entropy?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage-in-lightgbm" class="md-nav__link">
     Usage in LightGBM
   </a>
@@ -555,6 +562,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#when-to-use-weighted-cross-entropy" class="md-nav__link">
+    When to use Weighted Cross Entropy?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage-in-lightgbm" class="md-nav__link">
     Usage in LightGBM
   </a>
@@ -614,6 +628,15 @@
 }());
 </script>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="when-to-use-weighted-cross-entropy">When to use Weighted Cross Entropy?<a class="headerlink" href="#when-to-use-weighted-cross-entropy" title="Permanent link">&para;</a></h3>
+<p>A factor <em>alpha</em> is added in to Cross Entropy, allowing one to trade off recall and precision by up- or down-weighting the cost of a positive error relative to a negative error.</p>
+<p>A value <em>alpha</em> &gt; 1 decreases the false negative count, hence increasing the recall. Conversely, setting <em>alpha</em> &lt; 1 decreases the false positive count and increases the precision. </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -633,7 +656,7 @@
                                                       <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> 
                                                       <span class="n">random_state</span><span class="o">=</span><span class="mi">41114</span><span class="p">)</span>
 
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># Reduce False Positives</span>
 </code></pre></div>
 
 </div>
