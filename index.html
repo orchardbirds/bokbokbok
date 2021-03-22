@@ -194,8 +194,24 @@
   
   
     <li class="md-tabs__item">
+      <a href="getting_started/install.html" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="tutorials/weighted_cross_entropy.html" class="md-tabs__link">
-        Tutorials
+        How To
       </a>
     </li>
   
@@ -299,8 +315,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#example-usage" class="md-nav__link">
+    Example Usage
   </a>
   
 </li>
@@ -334,13 +350,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       <label class="md-nav__link" for="__nav_2">
-        Tutorials
+        Getting started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Tutorials
+          Getting started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -349,32 +365,8 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/weighted_cross_entropy.html" class="md-nav__link">
-        Weighted Cross Entropy
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorials/focal_loss.html" class="md-nav__link">
-        Weighted Focal Loss
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorials/F1_score.html" class="md-nav__link">
-        F1 Score
+      <a href="getting_started/install.html" class="md-nav__link">
+        Installation
       </a>
     </li>
   
@@ -400,11 +392,77 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
+        How To
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="How To" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How To
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/weighted_cross_entropy.html" class="md-nav__link">
+        Use Weighted Cross Entropy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/focal_loss.html" class="md-nav__link">
+        Use Weighted Focal Loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/F1_score.html" class="md-nav__link">
+        Use F1 Score
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
         Derivations
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Derivations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Derivations
         </label>
@@ -501,8 +559,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#example-usage" class="md-nav__link">
+    Example Usage
   </a>
   
 </li>
@@ -534,15 +592,14 @@
                 <h1 id="welcome-to-the-bokbokbok-doks">Welcome to the bokbokbok doks!<a class="headerlink" href="#welcome-to-the-bokbokbok-doks" title="Permanent link">&para;</a></h1>
 <p><img src="img/bokbokbok.png" width=190 align="right"></p>
 <p><strong>bokbokbok</strong> is a Python library that lets us easily implement custom loss functions and eval metrics in LightGBM and XGBoost.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>In order to install bokbokbok you need to use Python 3.7 or higher.</p>
-<p>Install <code>bokbokbok</code> via pip with:</p>
-<div class="highlight"><pre><span></span><code>pip install bokbokbok
-</code></pre></div>
-<p>Alternatively you can fork/clone and run:</p>
-<div class="highlight"><pre><span></span><code>git clone https://gitlab.com/orchardbirds/bokbokbok.git
-<span class="nb">cd</span> bokbokbok
-pip install .
+<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">clf</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                <span class="n">train_set</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
+                <span class="n">valid_sets</span><span class="o">=</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">],</span>
+                <span class="n">valid_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span><span class="s1">&#39;valid&#39;</span><span class="p">],</span>
+                <span class="n">fobj</span><span class="o">=</span><span class="n">WeightedCrossEntropyLoss</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">),</span>
+                <span class="n">feval</span><span class="o">=</span><span class="n">WeightedCrossEntropyMetric</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">),</span>
+                <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="licence">Licence<a class="headerlink" href="#licence" title="Permanent link">&para;</a></h2>
 <p>bokbokbok is created under the MIT License, see more in the LICENSE file</p>
@@ -564,13 +621,13 @@ pip install .
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
       
-        <a href="tutorials/weighted_cross_entropy.html" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="getting_started/install.html" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Weighted Cross Entropy
+              Installation
             </div>
           </div>
           <div class="md-footer__button md-icon">

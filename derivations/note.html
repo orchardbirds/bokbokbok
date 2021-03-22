@@ -192,8 +192,24 @@
   
   
     <li class="md-tabs__item">
+      <a href="../getting_started/install.html" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../tutorials/weighted_cross_entropy.html" class="md-tabs__link">
-        Tutorials
+        How To
       </a>
     </li>
   
@@ -289,13 +305,55 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       <label class="md-nav__link" for="__nav_2">
-        Tutorials
+        Getting started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Tutorials
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/install.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        How To
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="How To" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How To
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -305,7 +363,7 @@
   
     <li class="md-nav__item">
       <a href="../tutorials/weighted_cross_entropy.html" class="md-nav__link">
-        Weighted Cross Entropy
+        Use Weighted Cross Entropy
       </a>
     </li>
   
@@ -317,7 +375,7 @@
   
     <li class="md-nav__item">
       <a href="../tutorials/focal_loss.html" class="md-nav__link">
-        Weighted Focal Loss
+        Use Weighted Focal Loss
       </a>
     </li>
   
@@ -329,7 +387,7 @@
   
     <li class="md-nav__item">
       <a href="../tutorials/F1_score.html" class="md-nav__link">
-        F1 Score
+        Use F1 Score
       </a>
     </li>
   
@@ -354,14 +412,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
-      <label class="md-nav__link" for="__nav_3">
+      <label class="md-nav__link" for="__nav_4">
         Derivations
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Derivations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Derivations
         </label>
@@ -525,6 +583,7 @@
 <p><img src="https://latex.codecogs.com/svg.latex?\hat{y}&space;=&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;e^{-z}}" title="\hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}" /></p>
 <p>We will make use of the following property for the calculations of the Gradients and Hessians:</p>
 <p><img src="https://latex.codecogs.com/svg.latex?\frac{\partial&space;\hat{y}}{\partial&space;z}&space;=&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})" title="\frac{\partial \hat{y}}{\partial z} = \hat{y} \cdot (1 - \hat{y})" /></p>
+<p>Note to avoid divide-by-zero errors, we clip the values of the sigmoid such that the output of the sigmoid is bound by 10<sup>-15</sup> from below and 1 - 10<sup>-15</sup> from above.</p>
                 
               
               
@@ -551,7 +610,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              F1 Score
+              Use F1 Score
             </div>
           </div>
         </a>
