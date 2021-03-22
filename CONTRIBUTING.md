@@ -16,7 +16,7 @@ That said, there are many ways to contribute to bokbokbok, including:
 - Investigating bugs
 - Reporting issues
 
-Starting out with open source? See the guide [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/) and have a look at [our issues labelled *good first issue*](https://github.com/ing-bank/probatus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+Starting out with open source? See the guide [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/) and have a look at [our issues labelled *good first issue*](https://github.com/orchardbirds/bokbokbok/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
 ## Setup
 
