@@ -4,24 +4,17 @@
 
 **bokbokbok** is a Python library that lets us easily implement custom loss functions and eval metrics in LightGBM and XGBoost.
 
-## Installation
+## Example Usage
 
-In order to install bokbokbok you need to use Python 3.7 or higher.
-
-Install `bokbokbok` via pip with:
-
-```bash
-pip install bokbokbok
+```python
+clf = lgb.train(params=params,
+                train_set=train,
+                valid_sets=[train, valid],
+                valid_names=['train','valid'],
+                fobj=WeightedCrossEntropyLoss(alpha=alpha),
+                feval=WeightedCrossEntropyMetric(alpha=alpha),
+                early_stopping_rounds=100)
 ```
-
-Alternatively you can fork/clone and run:
-
-```bash
-git clone https://gitlab.com/orchardbirds/bokbokbok.git
-cd bokbokbok
-pip install .
-```
-
 ## Licence
 bokbokbok is created under the MIT License, see more in the LICENSE file
 
