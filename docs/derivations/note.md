@@ -20,3 +20,5 @@ The Hessian is similarly calculated:
 We will make use of the following property for the calculations of the Gradients and Hessians:
 
 <img src="https://latex.codecogs.com/svg.latex?\frac{\partial&space;\hat{y}}{\partial&space;z}&space;=&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})" title="\frac{\partial \hat{y}}{\partial z} = \hat{y} \cdot (1 - \hat{y})" />
+
+Note to avoid divide-by-zero errors, we clip the values of the sigmoid such that the output of the sigmoid is bound by 10<sup>-15</sup> from below and 1 - 10<sup>-15</sup> from above.
