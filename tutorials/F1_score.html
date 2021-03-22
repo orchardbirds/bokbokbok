@@ -13,14 +13,14 @@
         <meta name="author" content="Daniel Timbrell">
       
       
-        <link rel="canonical" href="https://orchardbirds.github.io/bokbokbok/derivations/focal.html">
+        <link rel="canonical" href="https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html">
       
       <link rel="icon" href="../img/bokbokbok.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
     
     
       
-        <title>Focal Loss - bokbokbok doks</title>
+        <title>F1 Score - bokbokbok doks</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#weighted-focal-loss" class="md-skip">
+        <a href="#usage-in-lightgbm" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Focal Loss
+              F1 Score
             
           </span>
         </div>
@@ -186,13 +186,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../tutorials/weighted_cross_entropy.html" class="md-tabs__link">
+      <a href="weighted_cross_entropy.html" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -202,15 +204,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="note.html" class="md-tabs__link md-tabs__link--active">
+      <a href="../derivations/note.html" class="md-tabs__link">
         Derivations
       </a>
     </li>
@@ -281,12 +281,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Tutorials
@@ -304,7 +306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/weighted_cross_entropy.html" class="md-nav__link">
+      <a href="weighted_cross_entropy.html" class="md-nav__link">
         Weighted Cross Entropy
       </a>
     </li>
@@ -316,76 +318,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/focal_loss.html" class="md-nav__link">
+      <a href="focal_loss.html" class="md-nav__link">
         Weighted Focal Loss
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorials/F1_score.html" class="md-nav__link">
-        F1 Score
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
-      
-      <label class="md-nav__link" for="__nav_3">
-        Derivations
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Derivations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Derivations
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="note.html" class="md-nav__link">
-        General Remarks
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wce.html" class="md-nav__link">
-        Weighted Cross Entropy
       </a>
     </li>
   
@@ -403,12 +337,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Focal Loss
+          F1 Score
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="focal.html" class="md-nav__link md-nav__link--active">
-        Focal Loss
+      <a href="F1_score.html" class="md-nav__link md-nav__link--active">
+        F1 Score
       </a>
       
         
@@ -423,8 +357,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#weighted-focal-loss" class="md-nav__link">
-    Weighted Focal Loss
+  <a href="#usage-in-lightgbm" class="md-nav__link">
+    Usage in LightGBM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-xgboost" class="md-nav__link">
+    Usage in XGBoost
   </a>
   
 </li>
@@ -437,12 +378,78 @@
   
 
           
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Derivations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Derivations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
   
   
   
     <li class="md-nav__item">
-      <a href="sle.html" class="md-nav__link">
+      <a href="../derivations/note.html" class="md-nav__link">
+        General Remarks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derivations/wce.html" class="md-nav__link">
+        Weighted Cross Entropy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derivations/focal.html" class="md-nav__link">
+        Focal Loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derivations/sle.html" class="md-nav__link">
         Squared Log Error
       </a>
     </li>
@@ -454,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="log_cosh.html" class="md-nav__link">
+      <a href="../derivations/log_cosh.html" class="md-nav__link">
         Log Cosh Error
       </a>
     </li>
@@ -490,8 +497,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#weighted-focal-loss" class="md-nav__link">
-    Weighted Focal Loss
+  <a href="#usage-in-lightgbm" class="md-nav__link">
+    Usage in LightGBM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-xgboost" class="md-nav__link">
+    Usage in XGBoost
   </a>
   
 </li>
@@ -508,26 +522,139 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/orchardbirds/bokbokbok/edit/master/docs/derivations/focal.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/orchardbirds/bokbokbok/edit/master/docs/tutorials/F1_score.ipynb" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Focal Loss</h1>
+                  <h1>F1 Score</h1>
                 
-                <h2 id="weighted-focal-loss">Weighted Focal Loss<a class="headerlink" href="#weighted-focal-loss" title="Permanent link">&para;</a></h2>
-<p>Weighted Focal Loss applies a scaling parameter <em>alpha</em> and a focusing parameter <em>gamma</em> to <a href="https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression">Binary Cross Entropy</a></p>
-<p>We take the definition of the Focal Loss from <a href="https://arxiv.org/pdf/1708.02002.pdf">this paper</a>:</p>
-<p><img src="https://latex.codecogs.com/svg.latex?L_{FL}&space;=&space;-&space;\alpha(1&space;-&space;p_{t})^{&space;\gamma}&space;\log&space;p_{t}" title="L_{FL} = - \alpha(1 - p_{t})^{ \gamma} \log p_{t}" /></p>
-<p>where:</p>
-<p><img src="https://latex.codecogs.com/svg.latex?p_{t}=&space;\begin{cases}&space;\hat{y},&&space;\text{if&space;}&space;y&space;=&space;1\\&space;1&space;-&space;\hat{y},&space;&&space;\text{otherwise}&space;\end{cases}" title="p_{t}= \begin{cases} \hat{y},& \text{if } y = 1\\ 1 - \hat{y}, & \text{otherwise} \end{cases}" /></p>
-<p>This is equivalent to writing:</p>
-<p><img src="https://latex.codecogs.com/svg.latex?L_{FL}&space;=&space;-&space;\alpha&space;y(1&space;-&space;\hat{y})^{\gamma}&space;\log&space;\hat{y}&space;-&space;(1&space;-&space;y)\hat{y}^{\gamma}&space;\log(1&space;-&space;\hat{y})" title="L_{FL} = - \alpha y(1 - \hat{y})^{\gamma} \log \hat{y} - (1 - y)\hat{y}^{\gamma} \log(1 - \hat{y})" /></p>
-<p>We calculate the Gradient:</p>
-<p><img src="https://latex.codecogs.com/svg.latex?\begin{aligned}&space;G_{FL}(z)&space;&&space;=&space;\frac{\partial&space;L_{FL}}{\partial&space;z}&space;=&space;\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}&space;\\&space;&&space;=&space;\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;(\alpha&space;\gamma&space;y&space;(1&space;-&space;\hat{y})^{\gamma&space;-&space;1}&space;\log\hat{y}&space;\\&space;&&space;-&space;\alpha\frac{y}{\hat{y}}(1&space;-&space;\hat{y})&space;\\&space;&&space;-&space;\gamma&space;(1&space;-&space;y)\hat{y}^{\gamma&space;-&space;1}&space;\log(1&space;-&space;\hat{y})&space;\\&space;&&space;&plus;&space;\frac{1&space;-&space;y}{1&space;-&space;\hat{y}}\hat{y}^{\gamma})\\&space;&&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;\alpha&space;y(1&space;-&space;\hat{y})^{\gamma}(\gamma\hat{y}&space;\log&space;\hat{y}&space;&plus;&space;\hat{y}&space;-&space;1)&space;&plus;&space;(1&space;-&space;y)&space;\hat{y}^{\gamma}(\gamma(\hat{y}&space;-&space;1)\log(1&space;-&space;\hat{y})&space;&plus;&space;\hat{y})&space;\end{aligned}" title="\begin{aligned} G_{FL}(z) & = \frac{\partial L_{FL}}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \\ & = \frac{\partial L}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = (\alpha \gamma y (1 - \hat{y})^{\gamma - 1} \log\hat{y} \\ & - \alpha\frac{y}{\hat{y}}(1 - \hat{y}) \\ & - \gamma (1 - y)\hat{y}^{\gamma - 1} \log(1 - \hat{y}) \\ & + \frac{1 - y}{1 - \hat{y}}\hat{y}^{\gamma})\\ & \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = \alpha y(1 - \hat{y})^{\gamma}(\gamma\hat{y} \log \hat{y} + \hat{y} - 1) + (1 - y) \hat{y}^{\gamma}(\gamma(\hat{y} - 1)\log(1 - \hat{y}) + \hat{y}) \end{aligned}" /></p>
-<p>We also need to calculate the Hessian:</p>
-<p><img src="https://latex.codecogs.com/svg.latex?\begin{aligned}&space;H_{FL}(z)&space;&&space;=&space;\frac{\partial&space;G_{FL}(z)}{\partial&space;z}&space;=&space;\frac{\partial&space;G_{FL}}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}&space;\\&space;&&space;=&space;\frac{\partial&space;G_{FL}(z)}{\partial&space;\hat{y}}&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;(\alpha\gamma&space;y&space;(1&space;-&space;\hat{y})^{\gamma}\log\hat{y}&space;\\&space;&&space;&plus;&space;\alpha\gamma&space;y&space;(1&space;-&space;\hat{y})^{\gamma}&space;\\&space;&&space;-&space;\alpha\gamma^{2}y\hat{y}(1&space;-&space;\hat{y})^{\gamma&space;-&space;1}\log\hat{y}&space;\\&space;&&space;&plus;&space;\alpha&space;y&space;(\gamma&space;&plus;&space;1)(1&space;-&space;\hat{y})^{\gamma}&space;\\&space;&&space;-&space;\gamma^{2}(1&space;-&space;y)\hat{y}^{\gamma&space;-&space;1}\log(1&space;-&space;\hat{y})(1&space;-&space;\hat{y})&space;\\&space;&&space;&plus;&space;\gamma(1&space;-&space;y)\hat{y}^{\gamma}&space;\\&space;&&space;&plus;&space;\gamma(1&space;-&space;y)\hat{y}^{\gamma}\log(1&space;-&space;\hat{y})&space;\\&space;&&space;&plus;&space;(\gamma&space;&plus;&space;1)(1&space;-&space;y)\hat{y}^{\gamma})&space;\\&space;&&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;\alpha&space;y\hat{y}(1&space;-&space;y)^{\gamma}(\gamma(1&space;-&space;\hat{y})\log\hat{y}&space;&plus;&space;2\gamma(1&space;-&space;\hat{y})&space;-&space;\gamma^{2}\hat{y}\log\hat{y}&space;&plus;&space;1&space;-&space;\hat{y})&space;\\&space;&&space;&plus;&space;(1&space;-&space;y)\hat{y}^{\gamma&space;&plus;&space;1}(1&space;-&space;\hat{y})(2\gamma&space;&plus;&space;\gamma(\log(1-\hat{y}))&space;&plus;&space;1)&space;\end{aligned}" title="\begin{aligned} H_{FL}(z) & = \frac{\partial G_{FL}(z)}{\partial z} = \frac{\partial G_{FL}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \\ & = \frac{\partial G_{FL}(z)}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = (\alpha\gamma y (1 - \hat{y})^{\gamma}\log\hat{y} \\ & + \alpha\gamma y (1 - \hat{y})^{\gamma} \\ & - \alpha\gamma^{2}y\hat{y}(1 - \hat{y})^{\gamma - 1}\log\hat{y} \\ & + \alpha y (\gamma + 1)(1 - \hat{y})^{\gamma} \\ & - \gamma^{2}(1 - y)\hat{y}^{\gamma - 1}\log(1 - \hat{y})(1 - \hat{y}) \\ & + \gamma(1 - y)\hat{y}^{\gamma} \\ & + \gamma(1 - y)\hat{y}^{\gamma}\log(1 - \hat{y}) \\ & + (\gamma + 1)(1 - y)\hat{y}^{\gamma}) \\ & \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = \alpha y\hat{y}(1 - y)^{\gamma}(\gamma(1 - \hat{y})\log\hat{y} + 2\gamma(1 - \hat{y}) - \gamma^{2}\hat{y}\log\hat{y} + 1 - \hat{y}) \\ & + (1 - y)\hat{y}^{\gamma + 1}(1 - \hat{y})(2\gamma + \gamma(\log(1-\hat{y})) + 1) \end{aligned}" /></p>
-<p>By setting <em>alpha</em> = 1 and <em>gamma</em> = 0 we obtain the Gradient and Hessian for Binary Cross Entropy Loss, as expected.</p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">bokbokbok.eval_metrics.classification</span> <span class="kn">import</span> <span class="n">F1_Score_Binary</span>
+<span class="kn">from</span> <span class="nn">bokbokbok.utils</span> <span class="kn">import</span> <span class="n">clip_sigmoid</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
+                           <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+                           <span class="n">random_state</span><span class="o">=</span><span class="mi">41114</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> 
+                                                      <span class="n">y</span><span class="p">,</span> 
+                                                      <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> 
+                                                      <span class="n">random_state</span><span class="o">=</span><span class="mi">41114</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="usage-in-lightgbm">Usage in LightGBM<a class="headerlink" href="#usage-in-lightgbm" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">valid</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+     <span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">41114</span><span class="p">,</span>
+     <span class="s1">&#39;n_jobs&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+     <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+   <span class="p">}</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                <span class="n">train_set</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
+                <span class="n">valid_sets</span><span class="o">=</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">],</span>
+                <span class="n">valid_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span><span class="s1">&#39;valid&#39;</span><span class="p">],</span>
+                <span class="n">feval</span><span class="o">=</span><span class="n">F1_Score_Binary</span><span class="p">(</span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">),</span>
+                <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="usage-in-xgboost">Usage in XGBoost<a class="headerlink" href="#usage-in-xgboost" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+
+<span class="n">dtrain</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">dvalid</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">41114</span><span class="p">,</span>
+     <span class="s1">&#39;objective&#39;</span><span class="p">:</span><span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s1">&#39;disable_default_eval_metric&#39;</span><span class="p">:</span> <span class="mi">1</span>
+   <span class="p">}</span>
+
+<span class="n">bst</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+          <span class="n">dtrain</span><span class="o">=</span><span class="n">dtrain</span><span class="p">,</span>
+          <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+          <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">maximize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">feval</span><span class="o">=</span><span class="n">F1_Score_Binary</span><span class="p">(</span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="n">XGBoost</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+          <span class="n">evals</span><span class="o">=</span><span class="p">[(</span><span class="n">dtrain</span><span class="p">,</span> <span class="s1">&#39;dtrain&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">dvalid</span><span class="p">,</span> <span class="s1">&#39;dvalid&#39;</span><span class="p">)])</span>
+
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">clip_sigmoid</span><span class="p">(</span><span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dvalid</span><span class="p">)))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+</div>
                 
               
               
@@ -545,7 +672,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="wce.html" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="focal_loss.html" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -554,19 +681,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Weighted Cross Entropy
+              Weighted Focal Loss
             </div>
           </div>
         </a>
       
       
-        <a href="sle.html" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../derivations/note.html" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Squared Log Error
+              General Remarks
             </div>
           </div>
           <div class="md-footer__button md-icon">

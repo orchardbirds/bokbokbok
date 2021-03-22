@@ -31,7 +31,7 @@
         
           
           
-          <meta name="theme-color" content="#ff6e42">
+          <meta name="theme-color" content="#e92063">
         
       
     
@@ -66,7 +66,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
       
   
     
@@ -186,6 +186,22 @@
         
   
   
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorials/weighted_cross_entropy.html" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
     
   
 
@@ -265,6 +281,72 @@
 
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/weighted_cross_entropy.html" class="md-nav__link">
+        Weighted Cross Entropy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/focal_loss.html" class="md-nav__link">
+        Weighted Focal Loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/F1_score.html" class="md-nav__link">
+        F1 Score
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -272,14 +354,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
-      <label class="md-nav__link" for="__nav_2">
+      <label class="md-nav__link" for="__nav_3">
         Derivations
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Derivations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Derivations
         </label>
@@ -355,6 +437,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sle.html" class="md-nav__link">
+        Squared Log Error
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log_cosh.html" class="md-nav__link">
+        Log Cosh Error
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -410,29 +516,18 @@
                   <h1>Weighted Cross Entropy</h1>
                 
                 <h2 id="weighted-cross-entropy-loss">Weighted Cross Entropy Loss<a class="headerlink" href="#weighted-cross-entropy-loss" title="Permanent link">&para;</a></h2>
-<p>Weighted Cross Entropy applies a scaling parameter $\alpha$  to <a href="https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression">Binary Cross Entropy</a>,
+<p>Weighted Cross Entropy applies a scaling parameter <em>alpha</em>  to <a href="https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression">Binary Cross Entropy</a>,
 allowing us to penalise false positives or false negatives more harshly. If you want false
-positives to be penalised more than false negatives, $\alpha$ must be greater than 1. Otherwise,
+positives to be penalised more than false negatives, <em>alpha</em> must be greater than 1. Otherwise,
 it must be less than 1. </p>
 <p>The equations for Binary and Weighted Cross Entropy Loss are the following:</p>
-<p>\begin{aligned}
-L_{BCE} = -y \log(\hat{y}(z)) - (1 - y)\log(1 - \hat{y}(z)) \ 
-L_{WCE} = - \alpha  y  \log(\hat{y}(z)) - (1 - y)\log(1 - \hat{y}(z))
-\end{aligned}</p>
+<p><img src="https://latex.codecogs.com/svg.latex?L_{BCE}&space;=&space;-y&space;\log(\hat{y}(z))&space;-&space;(1&space;-&space;y)\log(1&space;-&space;\hat{y}(z))" title="L_{BCE} = -y \log(\hat{y}(z)) - (1 - y)\log(1 - \hat{y}(z))" /></p>
+<p><img src="https://latex.codecogs.com/svg.latex?L_{WCE}&space;=&space;-&space;\alpha&space;y&space;\log(\hat{y}(z))&space;-&space;(1&space;-&space;y)\log(1&space;-&space;\hat{y}(z))" title="L_{WCE} = - \alpha y \log(\hat{y}(z)) - (1 - y)\log(1 - \hat{y}(z))" /></p>
 <p>We calculate the Gradient:</p>
-<p>\begin{aligned}
-G_{WCE}(z) &amp; = \frac{\partial L_{WCE}}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \ 
-&amp; = \frac{\partial L}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \ 
-&amp; = [\frac{-\alpha y}{\hat{y}} + \frac{1 - y}{1 - \hat{y}}]\cdot \hat{y} \cdot (1 - \hat{y}) \ 
-&amp; = y\hat{y}(\alpha - 1) + \hat{y} - \alpha y
-\end{aligned}</p>
-<p>and Hessian:
-\begin{aligned}
-H_{WCE}(z) &amp; = \frac{\partial G_{WCE}(z)}{\partial z} = \frac{\partial G_{WCE}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \ 
-&amp; = \frac{\partial G_{WCE}(z)}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \ 
-&amp; = (y(\alpha - 1) + 1) \cdot \hat{y}(1 - \hat{y})
-\end{aligned}</p>
-<p>By setting $\alpha = 1$ we obtain the Gradient and Hessian for Binary Cross Entropy Loss, as expected.</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\begin{aligned}&space;G_{WCE}(z)&space;&&space;=&space;\frac{\partial&space;L_{WCE}}{\partial&space;z}&space;=&space;\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}&space;\\&space;&&space;=&space;\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;[\frac{-\alpha&space;y}{\hat{y}}&space;&plus;&space;\frac{1&space;-&space;y}{1&space;-&space;\hat{y}}]\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;y\hat{y}(\alpha&space;-&space;1)&space;&plus;&space;\hat{y}&space;-&space;\alpha&space;y&space;\end{aligned}" title="\begin{aligned} G_{WCE}(z) & = \frac{\partial L_{WCE}}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \\ & = \frac{\partial L}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = [\frac{-\alpha y}{\hat{y}} + \frac{1 - y}{1 - \hat{y}}]\cdot \hat{y} \cdot (1 - \hat{y}) \\ & = y\hat{y}(\alpha - 1) + \hat{y} - \alpha y \end{aligned}" /></p>
+<p>We also need to calculate the Hessian:</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\begin{aligned}&space;H_{WCE}(z)&space;&&space;=&space;\frac{\partial&space;G_{WCE}(z)}{\partial&space;z}&space;=&space;\frac{\partial&space;G_{WCE}}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}&space;\\&space;&&space;=&space;\frac{\partial&space;G_{WCE}(z)}{\partial&space;\hat{y}}&space;\cdot&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})&space;\\&space;&&space;=&space;(y(\alpha&space;-&space;1)&space;&plus;&space;1)&space;\cdot&space;\hat{y}(1&space;-&space;\hat{y})&space;\end{aligned}" title="\begin{aligned} H_{WCE}(z) & = \frac{\partial G_{WCE}(z)}{\partial z} = \frac{\partial G_{WCE}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \\ & = \frac{\partial G_{WCE}(z)}{\partial \hat{y}} \cdot \hat{y} \cdot (1 - \hat{y}) \\ & = (y(\alpha - 1) + 1) \cdot \hat{y}(1 - \hat{y}) \end{aligned}" /></p>
+<p>By setting <em>alpha</em> = 1 we obtain the Gradient and Hessian for Binary Cross Entropy Loss, as expected.</p>
                 
               
               

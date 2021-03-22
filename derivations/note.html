@@ -31,7 +31,7 @@
         
           
           
-          <meta name="theme-color" content="#ff6e42">
+          <meta name="theme-color" content="#e92063">
         
       
     
@@ -66,7 +66,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
       
   
     
@@ -186,6 +186,22 @@
         
   
   
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorials/weighted_cross_entropy.html" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
     
   
 
@@ -265,6 +281,72 @@
 
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/weighted_cross_entropy.html" class="md-nav__link">
+        Weighted Cross Entropy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/focal_loss.html" class="md-nav__link">
+        Weighted Focal Loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/F1_score.html" class="md-nav__link">
+        F1 Score
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -272,14 +354,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
-      <label class="md-nav__link" for="__nav_2">
+      <label class="md-nav__link" for="__nav_3">
         Derivations
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Derivations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Derivations
         </label>
@@ -355,6 +437,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sle.html" class="md-nav__link">
+        Squared Log Error
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log_cosh.html" class="md-nav__link">
+        Log Cosh Error
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -411,22 +517,14 @@
                 
                 <h2 id="a-note-about-gradients-in-classification-problems">A Note About Gradients in Classification Problems<a class="headerlink" href="#a-note-about-gradients-in-classification-problems" title="Permanent link">&para;</a></h2>
 <p>For the gradient boosting packages we <a href="https://github.com/Microsoft/LightGBM/blob/master/examples/python-guide/advanced_example.py">have to calculate the gradient of the Loss function with respect to the marginal probabilites</a>.</p>
-<p>In this case, we must calculate
-\begin{aligned}
-\frac{\partial L}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}
-\end{aligned}</p>
-<p>The Hessian is similarly calculated:
-\begin{aligned}
-\frac{\partial^{2} L}{\partial z^{2}} = \frac{\partial}{\partial z}[\frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}]
-\end{aligned}</p>
-<p><strong>Where $\hat{y}$ is the sigmoid function, unless stated otherwise</strong>:</p>
-<p>\begin{aligned}
-\hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}
-\end{aligned}</p>
-<p>We will make use of the following property for the calculations of the Losses and Hessians:
-\begin{aligned}
-\frac{\partial \hat{y}}{\partial z} = \hat{y} \cdot (1 - \hat{y})
-\end{aligned}</p>
+<p>In this case, we must calculate</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\frac{\partial&space;L}{\partial&space;z}&space;=&space;\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}" title="\frac{\partial L}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}" /></p>
+<p>The Hessian is similarly calculated:</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\frac{\partial^{2}&space;L}{\partial&space;z^{2}}&space;=&space;\frac{\partial}{\partial&space;z}[\frac{\partial&space;L}{\partial&space;\hat{y}}&space;\cdot&space;\frac{\partial&space;\hat{y}}{\partial&space;z}]" title="\frac{\partial^{2} L}{\partial z^{2}} = \frac{\partial}{\partial z}[\frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}]" /></p>
+<p><strong>Where y-hat is the sigmoid function, unless stated otherwise</strong>:</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\hat{y}&space;=&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;e^{-z}}" title="\hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}" /></p>
+<p>We will make use of the following property for the calculations of the Gradients and Hessians:</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\frac{\partial&space;\hat{y}}{\partial&space;z}&space;=&space;\hat{y}&space;\cdot&space;(1&space;-&space;\hat{y})" title="\frac{\partial \hat{y}}{\partial z} = \hat{y} \cdot (1 - \hat{y})" /></p>
                 
               
               
@@ -444,7 +542,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../index.html" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../tutorials/F1_score.html" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -453,7 +551,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              F1 Score
             </div>
           </div>
         </a>
