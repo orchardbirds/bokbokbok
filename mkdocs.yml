@@ -15,11 +15,11 @@ nav:
       - Use Weighted Cross Entropy: tutorials/weighted_cross_entropy.ipynb
       - Use Weighted Focal Loss: tutorials/focal_loss.ipynb
       - Use F1 Score: tutorials/F1_score.ipynb
+      - Use Log Cosh Score: tutorials/F1_score.ipynb
   - Derivations:
       - General Remarks: derivations/note.md
       - Weighted Cross Entropy: derivations/wce.md
       - Focal Loss: derivations/focal.md
-      - Squared Log Error: derivations/sle.md
       - Log Cosh Error: derivations/log_cosh.md
 
 plugins:
