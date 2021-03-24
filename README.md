@@ -14,7 +14,6 @@ Main features:
 
 - [Weighted Cross Entropy](https://orchardbirds.github.io/bokbokbok/tutorials/weighted_cross_entropy.html)
 - [Weighted Focal Loss](https://orchardbirds.github.io/bokbokbok/tutorials/focal_loss.html)
-- Squared Log Error
 - [Log Cosh Loss](https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html)
 - [F1 score](https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html)
 
