@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://orchardbirds.github.io/bokbokbok/index.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/getting_started/install.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/tutorials/weighted_cross_entropy.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/tutorials/focal_loss.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html</loc>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/derivations/note.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/derivations/wce.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/derivations/focal.html</loc>
-     <lastmod>2021-03-22</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://orchardbirds.github.io/bokbokbok/derivations/sle.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://orchardbirds.github.io/bokbokbok/derivations/log_cosh.html</loc>
-     <lastmod>2021-03-22</lastmod>
+     <lastmod>2021-03-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
