@@ -77,7 +77,7 @@ def LogCoshLoss():
         """
 
         y = dtrain.get_label()
-        return np.tanh(yhat - y)
+        return -np.tanh(y - yhat)
 
     def _hessian(yhat, dtrain):
         """Compute the log cosh hessian.
@@ -91,7 +91,7 @@ def LogCoshLoss():
         """
 
         y = dtrain.get_label()
-        return 1. / np.power(np.cosh(yhat - y), 2)
+        return 1. / np.power(np.cosh(y - yhat), 2)
 
     def log_cosh_loss(
             yhat,
