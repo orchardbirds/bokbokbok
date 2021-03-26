@@ -17,10 +17,17 @@ nav:
       - Use F1 Score: tutorials/F1_score.ipynb
       - Use Log Cosh Score: tutorials/F1_score.ipynb
   - Derivations:
-      - General Remarks: derivations/note.md
+      - A Note About Gradients in Classification Problems: derivations/note.md
       - Weighted Cross Entropy: derivations/wce.md
       - Focal Loss: derivations/focal.md
       - Log Cosh Error: derivations/log_cosh.md
+  - Reference:
+    - Evaluation Metrics:
+      - bokbokbok.eval_metrics.classification: reference/eval_metrics_classification.md
+      - bokbokbok.eval_metrics.regression: reference/eval_metrics_regression.md
+    - Loss Functions:
+      - bokbokbok.loss_functions.classification: reference/loss_functions_classification.md
+      - bokbokbok.loss_functions.regression: reference/loss_functions_regression.md
 
 plugins:
   - mkdocstrings:
