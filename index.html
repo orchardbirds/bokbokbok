@@ -31,7 +31,7 @@
         
           
           
-          <meta name="theme-color" content="#e92063">
+          <meta name="theme-color" content="#009485">
         
       
     
@@ -66,7 +66,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="yellow">
       
   
     
@@ -338,8 +338,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
-    Example Usage
+  <a href="#example-usage-weighted-cross-entropy" class="md-nav__link">
+    Example Usage - Weighted Cross Entropy
   </a>
   
 </li>
@@ -466,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/F1_score.html" class="md-nav__link">
+      <a href="tutorials/log_cosh_loss.html" class="md-nav__link">
         Use Log Cosh Score
       </a>
     </li>
@@ -714,8 +714,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
-    Example Usage
+  <a href="#example-usage-weighted-cross-entropy" class="md-nav__link">
+    Example Usage - Weighted Cross Entropy
   </a>
   
 </li>
@@ -747,7 +747,7 @@
                 <h1 id="welcome-to-the-bokbokbok-doks">Welcome to the bokbokbok doks!<a class="headerlink" href="#welcome-to-the-bokbokbok-doks" title="Permanent link">&para;</a></h1>
 <p><img src="img/bokbokbok.png" width=190 align="right"></p>
 <p><strong>bokbokbok</strong> is a Python library that lets us easily implement custom loss functions and eval metrics in LightGBM and XGBoost.</p>
-<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<h2 id="example-usage-weighted-cross-entropy">Example Usage - Weighted Cross Entropy<a class="headerlink" href="#example-usage-weighted-cross-entropy" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">clf</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                 <span class="n">train_set</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
                 <span class="n">valid_sets</span><span class="o">=</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">],</span>
