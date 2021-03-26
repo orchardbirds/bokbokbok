@@ -3,7 +3,7 @@ import numpy as np
 
 def LogCoshLoss():
     """
-    An alternative to Mean Absolute Error.
+    [Log Cosh Loss](https://openreview.net/pdf?id=rkglvsC9Ym) is an alternative to Mean Absolute Error.
     """
 
     def _gradient(yhat, dtrain):

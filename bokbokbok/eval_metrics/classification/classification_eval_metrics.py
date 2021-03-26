@@ -47,7 +47,7 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
 
 def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
     """
-    Implements alpha-weighted Focal Loss taken from https://arxiv.org/pdf/1708.02002.pdf
+    Implements [alpha-weighted Focal Loss](https://arxiv.org/pdf/1708.02002.pdf)
 
     The more gamma is increased, the more the model is focussed on the hard, misclassified examples.
 
@@ -92,8 +92,8 @@ def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
 
 def F1_Score_Binary(XGBoost=False, *args, **kwargs):
     """
-    Implements the f1_score metric from scikit learn:
-    https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn-metrics-f1-score
+    Implements the f1_score metric
+    [from scikit learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn-metrics-f1-score)
 
     Args:
         *args: The arguments to be fed into the scikit learn metric.

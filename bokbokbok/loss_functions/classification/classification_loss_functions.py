@@ -77,8 +77,8 @@ def WeightedCrossEntropyLoss(alpha=0.5):
 
 def WeightedFocalLoss(alpha=1.0, gamma=2.0):
     """
-    Calculates the Weighted Focal Loss, see
-    https://arxiv.org/pdf/1708.02002.pdf
+    Calculates the [Weighted Focal Loss.](https://arxiv.org/pdf/1708.02002.pdf)
+
     Note that if using alpha = 1 and gamma = 0,
     this is the same as using regular Cross Entropy.
 
@@ -90,7 +90,7 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
     """
 
     def _gradient(yhat, dtrain, alpha, gamma):
-        """Compute the focal gradient.
+        """Compute the weighted focal gradient.
 
         Args:
             yhat (np.array): Margin predictions
@@ -113,7 +113,7 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
         return grad
 
     def _hessian(yhat, dtrain, alpha, gamma):
-        """Compute the weighted cross-entropy hessian.
+        """Compute the weighted focal hessian.
 
         Args:
             yhat (np.array): Margin predictions
