@@ -15,7 +15,7 @@ nav:
       - Use Weighted Cross Entropy: tutorials/weighted_cross_entropy.ipynb
       - Use Weighted Focal Loss: tutorials/focal_loss.ipynb
       - Use F1 Score: tutorials/F1_score.ipynb
-      - Use Log Cosh Score: tutorials/F1_score.ipynb
+      - Use Log Cosh Score: tutorials/log_cosh_loss.ipynb
   - Derivations:
       - A Note About Gradients in Classification Problems: derivations/note.md
       - Weighted Cross Entropy: derivations/wce.md
@@ -61,8 +61,8 @@ theme:
     - navigation.tabs
   palette:
     scheme: default
-    primary: pink
-    accent: blue
+    primary: teal
+    accent: yellow
 
 
 markdown_extensions:
