@@ -1,5 +1,3 @@
-## A Note About Gradients in Classification Problems
-
 For the gradient boosting packages we [have to calculate the gradient of the Loss function with respect to the marginal probabilites](https://github.com/Microsoft/LightGBM/blob/master/examples/python-guide/advanced_example.py).
 
 In this case, we must calculate

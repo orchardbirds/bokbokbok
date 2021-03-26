@@ -3,7 +3,8 @@ import numpy as np
 
 def LogCoshMetric(XGBoost=False):
     """
-    Calculates the Log Cosh Error
+    Calculates the [Log Cosh Error](https://openreview.net/pdf?id=rkglvsC9Ym) as an alternative to
+    Mean Absolute Error.
     Args:
         XGBoost (Bool): Set to True if using XGBoost. We assume LightGBM as default use.
                         Note that you should also set `maximize=False` in the XGBoost train function
