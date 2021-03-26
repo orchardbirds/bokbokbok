@@ -4,7 +4,7 @@
 
 **bokbokbok** is a Python library that lets us easily implement custom loss functions and eval metrics in LightGBM and XGBoost.
 
-## Example Usage
+## Example Usage - Weighted Cross Entropy
 
 ```python
 clf = lgb.train(params=params,
