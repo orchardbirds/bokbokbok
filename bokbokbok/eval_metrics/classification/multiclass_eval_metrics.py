@@ -26,7 +26,6 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
         Args:
             yhat: Predictions
             dtrain: The XGBoost / LightGBM dataset
-            alpha (float): Scale applied
             XGBoost (Bool): If XGBoost is to be implemented
 
         Returns:
