@@ -45,6 +45,19 @@ pytest
 
 We use [Code cogs](https://www.codecogs.com/latex/eqneditor.php) to generate equations that are compatible with Git and markdown.
 To use an equation, choose svg format and HTML embedding and copy the link at the bottom of the page.
+
+## Releases and versioning
+
+We use [semver](https://semver.org/) for versioning. When we are ready for a release, the maintainer runs:
+
+```shell
+git tag -a v0.1 -m "skorecard v0.1" && git push origin v0.1
+```
+
+When we create a new github release a [github action](https://github.com/ing-bank/skorecard/blob/main/.github/workflows/publish_pypi.yml) is triggered that:
+
+- a new version will be deployed to pypi
+- the docs will be re-built and deployed
         
 
 ### Documentation
