@@ -24,7 +24,8 @@ nav:
       - Log Cosh Error: derivations/log_cosh.md
   - Reference:
     - Evaluation Metrics:
-      - bokbokbok.eval_metrics.classification: reference/eval_metrics_classification.md
+      - bokbokbok.eval_metrics.binary_classification: reference/eval_metrics_binary.md
+      - bokbokbok.eval_metrics.multiclass_classification: reference/eval_metrics_multiclass.md
       - bokbokbok.eval_metrics.regression: reference/eval_metrics_regression.md
     - Loss Functions:
       - bokbokbok.loss_functions.classification: reference/loss_functions_classification.md
