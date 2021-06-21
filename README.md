@@ -17,7 +17,7 @@ Main features:
 - [Weighted Focal Loss](https://orchardbirds.github.io/bokbokbok/tutorials/focal_loss.html)
 - [Log Cosh Loss](https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html)
 - [F1 score](https://orchardbirds.github.io/bokbokbok/tutorials/F1_score.html)
-- [Quadratice Weighted Kappa](https://orchardbirds.github.io/bokbokbok/tutorials/quadratic_weighted_kappa.html)
+- [Quadratic Weighted Kappa](https://orchardbirds.github.io/bokbokbok/tutorials/quadratic_weighted_kappa.html)
 
 ## Installation
 
