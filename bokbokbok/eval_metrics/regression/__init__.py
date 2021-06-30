@@ -3,8 +3,10 @@
 
 from .regression_eval_metrics import (
     LogCoshMetric,
+    RMSPEMetric,
 )
 
 __all__ = [
-    "LogCoshMetric"
+    "LogCoshMetric",
+    "RMSPEMetric",
 ]
