@@ -16,6 +16,7 @@ nav:
       - Use Weighted Focal Loss: tutorials/focal_loss.ipynb
       - Use F1 Score: tutorials/F1_score.ipynb
       - Use Log Cosh Score: tutorials/log_cosh_loss.ipynb
+      - Use Root Mean Squared Percentage Error: tutorials/RMSPE.ipynb
       - Use Quadratic Weighted Kappa: tutorials/quadratic_weighted_kappa.ipynb
   - Derivations:
       - A Note About Gradients in Classification Problems: derivations/note.md
