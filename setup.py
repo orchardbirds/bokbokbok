@@ -35,7 +35,7 @@ docs_dep = [
 
 setup(
     name="bokbokbok",
-    version="0.3",
+    version="0.4",
     description="Custom Losses and Metrics for XGBoost, LightGBM, CatBoost",
     long_description=long_description,
     long_description_content_type="text/markdown",
