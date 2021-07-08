@@ -3,10 +3,10 @@
 
 from .regression_loss_functions import (
     LogCoshLoss,
-    SPELoss.
+    SPELoss,
 )
 
 __all__ = [
     "LogCoshLoss",
-    "SPELoss"
+    "SPELoss",
 ]
