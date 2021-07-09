@@ -35,7 +35,7 @@ def RMSPEMetric(XGBoost=False):
     Calculates the Root Mean Squared Percentage Error:
     https://www.kaggle.com/c/optiver-realized-volatility-prediction/overview/evaluation
 
-    There is no loss function for this as the gradient is constant, meaning the Hessian is equal to 0.
+    The corresponding Loss function is Squared Percentage Error.
     Args:
         XGBoost (Bool): Set to True if using XGBoost. We assume LightGBM as default use.
                         Note that you should also set `maximize=False` in the XGBoost train function
