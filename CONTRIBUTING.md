@@ -51,7 +51,7 @@ To use an equation, choose svg format and HTML embedding and copy the link at th
 We use [semver](https://semver.org/) for versioning. When we are ready for a release, the maintainer runs:
 
 ```shell
-git tag -a v0.1 -m "skorecard v0.1" && git push origin v0.1
+git tag -a v0.1 -m "bokbokbok v0.1" && git push origin v0.1
 ```
 
 When we create a new github release a [github action](https://github.com/ing-bank/skorecard/blob/main/.github/workflows/publish_pypi.yml) is triggered that:
