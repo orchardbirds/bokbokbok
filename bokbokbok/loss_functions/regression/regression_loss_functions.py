@@ -101,7 +101,7 @@ def SPELoss():
             grad: SPE loss gradient
             hess: SPE loss Hessian
         """
-        yhat[yhat < -1] = -1 + 1e-6
+        #yhat[yhat < -1] = -1 + 1e-6
         grad = _gradient(yhat, dtrain)
 
         hess = _hessian(yhat, dtrain)
