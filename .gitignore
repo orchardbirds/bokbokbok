@@ -582,8 +582,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 # End of https://www.toptal.com/developers/gitignore/api/r,macos,python,pycharm,windows,visualstudio,visualstudiocode,jupyternotebooks
-notebooks/ManualBucketerApp.ipynb
-notebooks/full_flow.ipynb
-notebooks/demo.ipynb
-notebooks/RPAA_Chapter_Meeting.ipnb
+
 *.ipynb
+*.pptx
