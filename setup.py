@@ -35,14 +35,14 @@ docs_dep = [
 
 setup(
     name="bokbokbok",
-    version="0.5",
+    version="0.6",
     description="Custom Losses and Metrics for XGBoost, LightGBM, CatBoost",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Daniel Timbrell",
     author_email="dantimbrell@gmail.com",
     license="Open Source",
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
