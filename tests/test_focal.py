@@ -79,7 +79,7 @@ def test_focal_wce_comparison():
                                                           random_state=41114)
 
     alpha = 3.0
-    gamma = 0
+    gamma = 0.0
 
     train = lgb.Dataset(X_train, y_train)
     valid = lgb.Dataset(X_valid, y_valid, reference=train)
