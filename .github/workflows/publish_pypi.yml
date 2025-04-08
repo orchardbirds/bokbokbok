@@ -20,7 +20,7 @@ jobs:
         poetry install --with dev
     - name: Make sure unit tests succeed
       run: |
-        python3 -m pytest tests/
+        poetry run pytest tests/
     - name: Build package & publish to PyPi
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
