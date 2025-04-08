@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install --upgrade setuptools pip poetry
-        pip3 poetry install --with dev
+        poetry install --with dev
     - name: Run unit tests and linters
       run: |
         pytest tests/
