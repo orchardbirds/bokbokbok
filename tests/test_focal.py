@@ -32,13 +32,13 @@ def test_focal_lgb_implementation():
      'seed': 41114,
      'n_jobs': 8,
      'learning_rate': 0.1,
+     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma)
    }
 
     wfl_clf = lgb.train(params=params_wfl,
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
-                objective=WeightedFocalLoss(alpha=alpha, gamma=gamma),
                 feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
                 early_stopping_rounds=100)
 
@@ -89,13 +89,13 @@ def test_focal_wce_comparison():
      'seed': 41114,
      'n_jobs': 8,
      'learning_rate': 0.1,
+     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma)
    }
 
     wfl_clf = lgb.train(params=params_wfl,
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
-                objective=WeightedFocalLoss(alpha=alpha, gamma=gamma),
                 feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
                 early_stopping_rounds=100)
 
@@ -105,13 +105,13 @@ def test_focal_wce_comparison():
      'seed': 41114,
      'n_jobs': 8,
      'learning_rate': 0.1,
+     'objective': WeightedCrossEntropyLoss(alpha=alpha),
    }
 
     wce_clf = lgb.train(params=params_wce,
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
-                objective=WeightedCrossEntropyLoss(alpha=alpha),
                 feval=WeightedCrossEntropyMetric(alpha=alpha),
                 early_stopping_rounds=100)
 
