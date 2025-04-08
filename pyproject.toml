@@ -36,6 +36,7 @@ mkdocs-minify-plugin = "^0.8.0"
 mknotebooks = "^0.8.0"
 mkdocstrings = "^0.29.1"
 mkdocs-print-site-plugin = "^2.7.2"
+uv = "^0.6.13"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

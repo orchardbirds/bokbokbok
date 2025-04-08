@@ -32,4 +32,4 @@ jobs:
         poetry run pytest tests/
     - name: Static code checking with ruff
       run: |
-        ruff check
+        poetry run ruff check

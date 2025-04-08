@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip poetry
-        poetry install setuptools wheel twine poetry uv
+        poetry install setuptools wheel twine poetry
         poetry install --with dev
     - name: Make sure unit tests succeed
       run: |
@@ -26,5 +26,5 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        uv build
-        uv publish
+        poetry run uv build
+        poetry run uv publish
