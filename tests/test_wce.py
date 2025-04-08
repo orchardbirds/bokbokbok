@@ -99,7 +99,7 @@ def test_wce_xgb_implementation():
             verbose_eval=10,
             obj=WeightedCrossEntropyLoss(alpha=alpha),
             maximize=False,
-            feval=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
+            custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")])
 
 
