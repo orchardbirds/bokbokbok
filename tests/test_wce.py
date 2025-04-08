@@ -63,3 +63,60 @@ def test_wce_lgb_implementation():
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
     preds = clf.predict(X_valid)
     assert mean_absolute_error(wce_preds, preds) == 0.0
+
+
+def test_wce_xgb_implementation():
+    """
+    Assert that there is no difference between running WCE with alpha=1
+    and XGBoost's internal CE loss.
+    """
+    X, y = make_classification(n_samples=1000, 
+                               n_features=10, 
+                               random_state=41114)
+
+    X_train, X_valid, y_train, y_valid = train_test_split(X, 
+                                                          y, 
+                                                          test_size=0.25, 
+                                                          random_state=41114)
+
+    alpha = 1.0
+
+    dtrain = xgb.DMatrix(X_train, y_train)
+    dvalid = xgb.DMatrix(X_valid, y_valid)
+
+    params_wce = {
+        "seed": 41114,
+        "objective": "binary:logistic",
+        "learning_rate": 0.1,
+        "disable_default_eval_metric": 1
+    }
+
+    bst_wce = xgb.train(params,
+            dtrain=dtrain,
+            num_boost_round=300,
+            early_stopping_rounds=10,
+            verbose_eval=10,
+            obj=WeightedCrossEntropyLoss(alpha=alpha),
+            maximize=False,
+            feval=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")])
+
+
+    params = {
+        "seed": 41114,
+        "objective": "binary:logistic",
+        "learning_rate": 0.1,
+        "disable_default_eval_metric": 1
+    }
+
+    bst = xgb.train(params,
+            dtrain=dtrain,
+            num_boost_round=300,
+            early_stopping_rounds=10,
+            verbose_eval=10,
+            maximize=False,
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")])
+
+    wce_preds = clip_sigmoid(bst_wce.predict(X_valid))
+    preds = bst.predict(X_valid)
+    assert mean_absolute_error(wce_preds, preds) == 0.0
