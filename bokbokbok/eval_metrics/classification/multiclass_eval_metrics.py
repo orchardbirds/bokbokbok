@@ -35,7 +35,7 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
         y = dtrain.get_label()
         num_class = len(np.unique(dtrain.get_label()))
 
-        if XGBoost == False:
+        if not XGBoost:
             # LightGBM needs extra reshaping
             yhat = yhat.reshape(num_class, len(y)).T
         yhat = yhat.argmax(axis=1)

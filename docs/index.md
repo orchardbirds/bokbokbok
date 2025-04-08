@@ -11,7 +11,7 @@ clf = lgb.train(params=params,
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
-                fobj=WeightedCrossEntropyLoss(alpha=alpha),
+                objective=WeightedCrossEntropyLoss(alpha=alpha),
                 feval=WeightedCrossEntropyMetric(alpha=alpha),
                 early_stopping_rounds=100)
 ```

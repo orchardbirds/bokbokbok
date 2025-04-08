@@ -37,8 +37,8 @@ def test_wce_lgb_implementation():
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
-                fobj=WeightedCrossEntropyLoss(alpha=1.0),
-                feval=WeightedCrossEntropyMetric(alpha=1.0),
+                objective=WeightedCrossEntropyLoss(alpha=alpha),
+                feval=WeightedCrossEntropyMetric(alpha=alpha),
                 early_stopping_rounds=100)
 
 
