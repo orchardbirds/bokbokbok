@@ -15,11 +15,11 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade setuptools wheel twine poetry uv
+        python3 -m pip install --upgrade pip poetry
+        poetry install setuptools wheel twine poetry uv
+        poetry install --with dev
     - name: Make sure unit tests succeed
       run: |
-        poetry install --with dev
         python3 -m pytest tests/
     - name: Build package & publish to PyPi
       env:
