@@ -23,9 +23,9 @@ def LogCoshMetric(XGBoost=False):
         y = dtrain.get_label()
         elements = np.log(np.cosh(yhat - y))
         if XGBoost:
-            return 'LogCosh', float(np.sum(elements) / len(y))
+            return "LogCosh", float(np.sum(elements) / len(y))
         else:
-            return 'LogCosh', float(np.sum(elements) / len(y)), False
+            return "LogCosh", float(np.sum(elements) / len(y)), False
 
     return log_cosh_error
 
@@ -54,8 +54,8 @@ def RMSPEMetric(XGBoost=False):
         y = dtrain.get_label()
         elements = ((y - yhat) / y) ** 2
         if XGBoost:
-            return 'RMSPE', float(np.sqrt(np.sum(elements) / len(y)))
+            return "RMSPE", float(np.sqrt(np.sum(elements) / len(y)))
         else:
-            return 'RMSPE', float(np.sqrt(np.sum(elements) / len(y))), False
+            return "RMSPE", float(np.sqrt(np.sum(elements) / len(y))), False
 
     return RMSPE

@@ -38,9 +38,9 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
         yhat = clip_sigmoid(yhat)
         elements = - alpha * y * np.log(yhat) - (1 - y) * np.log(1 - yhat)
         if XGBoost:
-            return f'WCE_alpha{alpha}', (np.sum(elements) / len(y))
+            return f"WCE_alpha{alpha}", (np.sum(elements) / len(y))
         else:
-            return f'WCE_alpha{alpha}', (np.sum(elements) / len(y)), False
+            return f"WCE_alpha{alpha}", (np.sum(elements) / len(y)), False
 
     return weighted_cross_entropy_metric
 
@@ -83,9 +83,9 @@ def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
                     (1 - y) * np.log(1 - yhat) * np.power(yhat, gamma))
 
         if XGBoost:
-            return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements) / len(y))
+            return f"Focal_alpha{alpha}_gamma{gamma}", (np.sum(elements) / len(y))
         else:
-            return f'Focal_alpha{alpha}_gamma{gamma}', (np.sum(elements) / len(y)), False
+            return f"Focal_alpha{alpha}_gamma{gamma}", (np.sum(elements) / len(y)), False
 
     return focal_metric
 
@@ -116,8 +116,8 @@ def F1_Score_Binary(XGBoost=False, *args, **kwargs):
         y_true = data.get_label()
         yhat = np.round(yhat)
         if XGBoost:
-            return 'F1', f1_score(y_true, yhat, *args, **kwargs)
+            return "F1", f1_score(y_true, yhat, *args, **kwargs)
         else:
-            return 'F1', f1_score(y_true, yhat, *args, **kwargs), True
+            return "F1", f1_score(y_true, yhat, *args, **kwargs), True
 
     return binary_f1_score

@@ -43,8 +43,8 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
         qwk = cohen_kappa_score(y, yhat, weights="quadratic")
 
         if XGBoost:
-            return 'QWK', qwk
+            return "QWK", qwk
         else:
-            return 'QWK', qwk, True
+            return "QWK", qwk, True
 
     return quadratic_weighted_kappa_metric

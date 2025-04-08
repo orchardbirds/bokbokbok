@@ -7,13 +7,15 @@
 ## Example Usage - Weighted Cross Entropy
 
 ```python
+params = {
+    "objective": WeightedCrossEntropyLoss(alpha=alpha),
+    "early_stopping_rounds": 100,
+}
 clf = lgb.train(params=params,
                 train_set=train,
                 valid_sets=[train, valid],
-                valid_names=['train','valid'],
-                objective=WeightedCrossEntropyLoss(alpha=alpha),
-                feval=WeightedCrossEntropyMetric(alpha=alpha),
-                early_stopping_rounds=100)
+                valid_names=["train","valid"],
+                feval=WeightedCrossEntropyMetric(alpha=alpha),)
 ```
 ## Licence
 bokbokbok is created under the MIT License, see more in the LICENSE file
