@@ -100,7 +100,8 @@ def test_wce_xgb_implementation():
             obj=WeightedCrossEntropyLoss(alpha=alpha),
             maximize=False,
             custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
-            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")])
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
+            evals_result=results)
 
 
     params = {
@@ -116,7 +117,8 @@ def test_wce_xgb_implementation():
             early_stopping_rounds=10,
             verbose_eval=10,
             maximize=False,
-            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")])
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
+            evals_result=results)
 
     wce_preds = clip_sigmoid(bst_wce.predict(X_valid))
     preds = bst.predict(X_valid)
