@@ -92,6 +92,7 @@ def test_wce_xgb_implementation():
         "disable_default_eval_metric": 1
     }
 
+    results = {}
     bst_wce = xgb.train(params_wce,
             dtrain=dtrain,
             num_boost_round=300,
@@ -110,7 +111,7 @@ def test_wce_xgb_implementation():
         "learning_rate": 0.1,
         "disable_default_eval_metric": 1
     }
-
+    results = {}
     bst = xgb.train(params,
             dtrain=dtrain,
             num_boost_round=300,
