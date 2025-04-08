@@ -51,7 +51,7 @@ def test_wce_lgb_implementation():
         "metric": "cross_entropy",
         "learning_rate": 0.1,
         "boost_from_average": False,
-        "early_stopping_rounds":100
+        "early_stopping_rounds": 100
     }
 
     clf = lgb.train(params=params,
