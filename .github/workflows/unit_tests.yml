@@ -29,7 +29,7 @@ jobs:
         poetry install --with dev
     - name: Run unit tests and linters
       run: |
-        pytest tests/
+        python -m pytest tests/
     - name: Static code checking with ruff
       run: |
         ruff check
