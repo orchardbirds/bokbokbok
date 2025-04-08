@@ -15,7 +15,7 @@ dependencies = [
 
 [project.urls]
 homepage = "https://github.com/orchardbirds/bokbokbok"
-documentation = "orchardbirds.github.io/bokbokbok/"
+documentation = "https://orchardbirds.github.io/bokbokbok/"
 
 [tool.poetry]
 
