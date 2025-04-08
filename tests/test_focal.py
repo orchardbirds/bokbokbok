@@ -32,7 +32,8 @@ def test_focal_lgb_implementation():
      'seed': 41114,
      'n_jobs': 8,
      'learning_rate': 0.1,
-     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma)
+     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma),
+     'early_stopping_rounds':100
    }
 
     wfl_clf = lgb.train(params=params_wfl,
@@ -40,7 +41,7 @@ def test_focal_lgb_implementation():
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
                 feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
-                early_stopping_rounds=100)
+                )
 
 
     params = {
@@ -50,14 +51,15 @@ def test_focal_lgb_implementation():
         'n_jobs': 8,
         'metric': 'cross_entropy',
         'learning_rate': 0.1,
-        'boost_from_average': False
+        'boost_from_average': False,
+        'early_stopping_rounds':100
     }
 
     clf = lgb.train(params=params,
                     train_set=train,
                     valid_sets=[train, valid],
                     valid_names=['train','valid'],
-                    early_stopping_rounds=100)
+                    )
 
     wfl_preds = clip_sigmoid(wfl_clf.predict(X_valid))
     preds = clf.predict(X_valid)
@@ -89,7 +91,8 @@ def test_focal_wce_comparison():
      'seed': 41114,
      'n_jobs': 8,
      'learning_rate': 0.1,
-     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma)
+     'objective': WeightedFocalLoss(alpha=alpha, gamma=gamma),
+     'early_stopping_rounds':100
    }
 
     wfl_clf = lgb.train(params=params_wfl,
@@ -97,7 +100,7 @@ def test_focal_wce_comparison():
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
                 feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
-                early_stopping_rounds=100)
+                )
 
 
     params_wce = {
@@ -106,6 +109,7 @@ def test_focal_wce_comparison():
      'n_jobs': 8,
      'learning_rate': 0.1,
      'objective': WeightedCrossEntropyLoss(alpha=alpha),
+     'early_stopping_rounds':100
    }
 
     wce_clf = lgb.train(params=params_wce,
@@ -113,7 +117,7 @@ def test_focal_wce_comparison():
                 valid_sets=[train, valid],
                 valid_names=['train','valid'],
                 feval=WeightedCrossEntropyMetric(alpha=alpha),
-                early_stopping_rounds=100)
+                )
 
     wfl_preds = clip_sigmoid(wfl_clf.predict(X_valid))
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
