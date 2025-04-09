@@ -108,6 +108,7 @@ def test_wce_xgb_implementation():
     params = {
         "seed": 41114,
         "objective": "binary:logistic",
+        "eval_metric": "logloss",
         "learning_rate": 0.1,
     }
     results = {}
