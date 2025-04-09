@@ -119,6 +119,6 @@ def test_wce_xgb_implementation():
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
-    wce_preds = clip_sigmoid(bst_wce.predict(X_valid))
-    preds = bst.predict(X_valid)
+    wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
+    preds = bst.predict(dvalid)
     assert mean_absolute_error(wce_preds, preds) == 0.0
