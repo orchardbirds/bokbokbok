@@ -109,7 +109,6 @@ def test_wce_xgb_implementation():
         "seed": 41114,
         "objective": "binary:logistic",
         "learning_rate": 0.1,
-        "disable_default_eval_metric": 1
     }
     results = {}
     bst = xgb.train(params,
@@ -117,7 +116,6 @@ def test_wce_xgb_implementation():
             num_boost_round=300,
             early_stopping_rounds=10,
             verbose_eval=10,
-            maximize=False,
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
