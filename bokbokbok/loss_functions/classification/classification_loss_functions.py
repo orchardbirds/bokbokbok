@@ -2,7 +2,7 @@ import numpy as np
 from bokbokbok.utils import clip_sigmoid
 
 
-def WeightedCrossEntropyLoss(alpha=0.5):
+def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
     """
     Calculates the Weighted Cross-Entropy Loss, which applies a factor alpha, allowing one to
     trade off recall and precision by up- or down-weighting the cost of a positive error relative
@@ -12,7 +12,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
     """
 
-    def _gradient(yhat, dtrain, alpha):
+    def _gradient(yhat, dtrain, alpha, library):
         """Compute the weighted cross-entropy gradient.
 
         Args:
@@ -25,13 +25,14 @@ def WeightedCrossEntropyLoss(alpha=0.5):
         """
         y = dtrain.get_label()
 
-        yhat = clip_sigmoid(yhat)
+        if library != "XGBoost":
+            yhat = clip_sigmoid(yhat)
 
         grad = (y * yhat * (alpha - 1)) + yhat - (alpha * y)
 
         return grad
 
-    def _hessian(yhat, dtrain, alpha):
+    def _hessian(yhat, dtrain, alpha, library):
         """Compute the weighted cross-entropy hessian.
 
         Args:
@@ -43,7 +44,9 @@ def WeightedCrossEntropyLoss(alpha=0.5):
             hess: Weighted cross-entropy Hessian
         """
         y = dtrain.get_label()
-        yhat = clip_sigmoid(yhat)
+
+        if library != "XGBoost":
+            yhat = clip_sigmoid(yhat)
 
         hess = (y * (alpha - 1) + 1) * yhat * (1 - yhat)
 
@@ -52,7 +55,8 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     def weighted_cross_entropy(
             yhat,
             dtrain,
-            alpha=alpha
+            alpha=alpha,
+            library=library,
     ):
         """
         Calculate gradient and hessian for weight cross-entropy,
@@ -66,9 +70,9 @@ def WeightedCrossEntropyLoss(alpha=0.5):
             grad: Weighted cross-entropy gradient
             hess: Weighted cross-entropy Hessian
         """
-        grad = _gradient(yhat, dtrain, alpha=alpha)
+        grad = _gradient(yhat, dtrain, alpha=alpha, library=library)
 
-        hess = _hessian(yhat, dtrain, alpha=alpha)
+        hess = _hessian(yhat, dtrain, alpha=alpha, library=library)
 
         return grad, hess
 
