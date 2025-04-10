@@ -106,7 +106,7 @@ def test_wce_xgb_implementation():
 
     dtrain = xgb.DMatrix(X_train, y_train)
     dvalid = xgb.DMatrix(X_valid, y_valid)
-    
+
     params = {
         "seed": 41114,
         "objective": "binary:logistic",
@@ -122,6 +122,6 @@ def test_wce_xgb_implementation():
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
-    wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
+    wce_preds = bst_wce.predict(dvalid) # clip_sigmoid(bst_wce.predict(dvalid))
     preds = bst.predict(dvalid)
     assert mean_absolute_error(wce_preds, preds) == 0.0
