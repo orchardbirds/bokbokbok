@@ -117,7 +117,7 @@ def test_wce_xgb_implementation():
     bst = xgb.train(params,
             dtrain=dtrain,
             num_boost_round=300,
-            early_stopping_rounds=10,
+            early_stopping_rounds=100,
             verbose_eval=1,
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
