@@ -68,11 +68,15 @@ def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
             grad: Weighted cross-entropy gradient
             hess: Weighted cross-entropy Hessian
         """
-        if library != "XGBoost":
-            yhat = clip_sigmoid(yhat)
-        grad = _gradient(yhat, dtrain, alpha=alpha, library=library)
+        p = clip_sigmoid(yhat)
+        #grad = _gradient(yhat, dtrain, alpha=alpha, library=library)
 
-        hess = _hessian(yhat, dtrain, alpha=alpha, library=library)
+        #hess = _hessian(yhat, dtrain, alpha=alpha, library=library)
+
+        weight = alpha * y + (1 - alpha) * (1 - y)
+        grad = weight * (p - y)
+        hess = weight * p * (1 - p)
+
 
         return grad, hess
 
