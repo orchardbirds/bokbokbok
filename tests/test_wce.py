@@ -110,7 +110,7 @@ def test_wce_xgb_implementation():
     params = {
         "seed": 41114,
         "objective": "reg:logistic",
-        #"eval_metric": "logloss",
+        "eval_metric": "error",
         "learning_rate": 0.1,
     }
     results = {}
@@ -125,6 +125,5 @@ def test_wce_xgb_implementation():
     wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
     preds = bst.predict(dvalid)
     print(preds)
-    print(bst_wce.predict(dvalid))
     print(wce_preds)
     assert mean_absolute_error(wce_preds, preds) == 0.0
