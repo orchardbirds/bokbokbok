@@ -25,8 +25,8 @@ def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
         """
         y = dtrain.get_label()
 
-        if library != "XGBoost":
-            yhat = clip_sigmoid(yhat)
+        #if library != "XGBoost":
+        yhat = clip_sigmoid(yhat)
 
         grad = (y * yhat * (alpha - 1)) + yhat - (alpha * y)
 
@@ -45,8 +45,8 @@ def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
         """
         y = dtrain.get_label()
 
-        if library != "XGBoost":
-            yhat = clip_sigmoid(yhat)
+        #if library != "XGBoost":
+        yhat = clip_sigmoid(yhat)
 
         hess = (y * (alpha - 1) + 1) * yhat * (1 - yhat)
 

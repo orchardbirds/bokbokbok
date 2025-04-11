@@ -35,8 +35,8 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
 
         """
         y = dtrain.get_label()
-        if not XGBoost:
-            yhat = clip_sigmoid(yhat)
+        #if not XGBoost:
+        yhat = clip_sigmoid(yhat)
         elements = - alpha * y * np.log(yhat) - (1 - y) * np.log(1 - yhat)
         if XGBoost:
             return f"WCE_alpha{alpha}", (np.sum(elements) / len(y))
