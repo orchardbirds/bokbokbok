@@ -80,7 +80,7 @@ def test_wce_xgb_implementation():
                                                           test_size=0.25, 
                                                           random_state=41114)
 
-    alpha = 1.0
+    alpha = 1
 
     dtrain = xgb.DMatrix(X_train, y_train)
     dvalid = xgb.DMatrix(X_valid, y_valid)
@@ -125,5 +125,6 @@ def test_wce_xgb_implementation():
     wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
     preds = bst.predict(dvalid)
     print(preds)
+    print(bst_wce.predict(dvalid))
     print(wce_preds)
     assert mean_absolute_error(wce_preds, preds) == 0.0
