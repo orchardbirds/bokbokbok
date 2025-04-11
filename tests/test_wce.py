@@ -88,8 +88,7 @@ def test_wce_xgb_implementation():
     params_wce = {
         "seed": 41114,
         "learning_rate": 0.1,
-        #"disable_default_eval_metric": True
-        "eval_metric": "logloss",
+        "disable_default_eval_metric": True
     }
 
     results = {}
@@ -100,7 +99,7 @@ def test_wce_xgb_implementation():
             verbose_eval=1,
             obj=WeightedCrossEntropyLoss(alpha=alpha),
             maximize=False,
-            #custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
+            custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
@@ -110,7 +109,7 @@ def test_wce_xgb_implementation():
 
     params = {
         "seed": 41114,
-        "objective": "reg:logistic",
+        "objective": "binary:logistic",
         "eval_metric": "logloss",
         "learning_rate": 0.1,
     }
