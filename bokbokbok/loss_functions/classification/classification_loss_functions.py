@@ -72,7 +72,7 @@ def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
         #grad = _gradient(yhat, dtrain, alpha=alpha, library=library)
 
         #hess = _hessian(yhat, dtrain, alpha=alpha, library=library)
-
+        y = dtrain.get_label()
         weight = alpha * y + (1 - alpha) * (1 - y)
         grad = weight * (p - y)
         hess = weight * p * (1 - p)
