@@ -92,30 +92,16 @@ def test_wce_xgb_implementation():
     }
 
     results = {}
-    # bst_wce = xgb.train(params_wce,
-    #         dtrain=dtrain,
-    #         num_boost_round=300,
-    #         early_stopping_rounds=100,
-    #         verbose_eval=1,
-    #         obj=WeightedCrossEntropyLoss(alpha=alpha),
-    #         maximize=False,
-    #         custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
-    #         evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
-    #         evals_result=results)
-    bst_wce = xgb.XGBClassifier(seed=41114,
-    learning_rate=0.1,
-    disable_default_eval_metric=True,
-    early_stopping_rounds=100,
-    num_boost_round=300,
-    verbose_eval=1,
-    objective=WeightedCrossEntropyLoss(alpha=alpha),
-    maximize=False,
-    custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
-    evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
-    evals_result=results
-
-    )
-    bst_wce.fit(X_train, y_train)
+    bst_wce = xgb.train(params_wce,
+            dtrain=dtrain,
+            num_boost_round=300,
+            early_stopping_rounds=100,
+            verbose_eval=1,
+            obj=WeightedCrossEntropyLoss(alpha=alpha),
+            maximize=False,
+            custom_metric=WeightedCrossEntropyMetric(alpha=alpha, XGBoost=True),
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
+            evals_result=results)
 
 
 
@@ -129,28 +115,16 @@ def test_wce_xgb_implementation():
         "learning_rate": 0.1,
     }
     results = {}
-    # bst = xgb.train(params,
-    #         dtrain=dtrain,
-    #         num_boost_round=300,
-    #         early_stopping_rounds=100,
-    #         verbose_eval=1,
-    #         evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
-    #         evals_result=results)
-    bst = xgb.XGBClassifier(seed=41114,
-    learning_rate=0.1,
-    early_stopping_rounds=100,
-    num_boost_round=300,
-    verbose_eval=1,
-    evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
-    evals_result=results
+    bst = xgb.train(params,
+            dtrain=dtrain,
+            num_boost_round=300,
+            early_stopping_rounds=100,
+            verbose_eval=1,
+            evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
+            evals_result=results)
 
-    )
-    bst.fit(X_train, y_train)
-
-    #wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, bst_wce.best_iteration + 1)))
-    #preds = bst.predict(dvalid, iteration_range = (0, bst.best_iteration + 1))
-    wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
-    preds = clip_sigmoid(bst.predict(dvalid))
+    wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, bst_wce.best_iteration + 1)))
+    preds = bst.predict(dvalid, iteration_range = (0, bst.best_iteration + 1))
     print(preds)
     print(wce_preds)
-    assert mean_absolute_error(wce_preds, preds) == 0.0
+    assert np.allclose(wce_preds, preds, atol=1e-6)
