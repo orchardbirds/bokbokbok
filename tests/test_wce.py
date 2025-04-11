@@ -64,7 +64,9 @@ def test_wce_lgb_implementation():
 
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
     preds = clf.predict(X_valid)
-    assert mean_absolute_error(wce_preds, preds) == 0.0
+    print(wce_preds)
+    print(preds)
+    assert mean_absolute_error(wce_preds, preds) == 0.1
 
 
 def test_wce_xgb_implementation():
@@ -125,8 +127,10 @@ def test_wce_xgb_implementation():
             evals_result=results)
 
     best_iteration = min(bst_wce.best_iteration, bst.best_iteration)
-    wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, best_iteration + 1)))
-    preds = bst.predict(dvalid, iteration_range = (0, best_iteration + 1))
+    print(bst_wce.best_iteration, bst.best_iteration)
+    wce_preds = bst_wce.predict(dvalid, iteration_range = (0, bst_wce.best_iteration + 1))
+    preds = bst.predict(dvalid, iteration_range = (0, bst.best_iteration + 1))
     print(preds)
     print(wce_preds)
+    print(clip_sigmoid(wce_preds))
     assert np.allclose(wce_preds, preds, atol=1e-6)
