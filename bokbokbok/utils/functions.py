@@ -14,6 +14,6 @@ def clip_sigmoid(yhat):
         yhat: The clipped probabilities
     """
     yhat = 1. / (1. + np.exp(-yhat))
-    yhat[yhat >= 1] = 1 - 1e-15
-    yhat[yhat <= 0] = 1e-15
+    yhat[yhat >= 1] = 1 - 1e-6
+    yhat[yhat <= 0] = 1e-6
     return yhat
