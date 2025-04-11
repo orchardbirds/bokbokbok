@@ -115,7 +115,7 @@ def test_wce_xgb_implementation():
     evals_result=results
 
     )
-    bst_wce.fit(dtrain)
+    bst_wce.fit(X_train, y_train)
 
 
 
@@ -145,7 +145,7 @@ def test_wce_xgb_implementation():
     evals_result=results
 
     )
-    bst.fit(dtrain)
+    bst.fit(X_train, y_train)
 
     #wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, bst_wce.best_iteration + 1)))
     #preds = bst.predict(dvalid, iteration_range = (0, bst.best_iteration + 1))
