@@ -94,7 +94,7 @@ def test_wce_xgb_implementation():
     results = {}
     bst_wce = xgb.train(params_wce,
             dtrain=dtrain,
-            num_boost_round=10,
+            num_boost_round=300,
             early_stopping_rounds=10,
             verbose_eval=1,
             obj=WeightedCrossEntropyLoss(alpha=alpha),
