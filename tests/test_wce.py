@@ -123,8 +123,9 @@ def test_wce_xgb_implementation():
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
-    wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, bst_wce.best_iteration + 1)))
-    preds = bst.predict(dvalid, iteration_range = (0, bst.best_iteration + 1))
+    best_iteration = min(bst_wce.best_iteration, bst.best_iteration)
+    wce_preds = clip_sigmoid(bst_wce.predict(dvalid, iteration_range = (0, best_iteration + 1)))
+    preds = bst.predict(dvalid, iteration_range = (0, best_iteration + 1))
     print(preds)
     print(wce_preds)
     assert np.allclose(wce_preds, preds, atol=1e-6)
