@@ -122,9 +122,8 @@ def test_wce_xgb_implementation():
             evals=[(dtrain, "dtrain"), (dvalid, "dvalid")],
             evals_result=results)
 
-    wce_preds = clip_sigmoid(bst_wce.predict(dvalid))
-    preds = bst.predict(dvalid)
+    wce_preds = clip_sigmoid(bst_wce.predict(dvalid, ntree_limit=bst_wce.best_ntree_limit))
+    preds = bst.predict(dvalid, ntree_limit=bst.best_ntree_limit)
     print(preds)
-    print(bst_wce.predict(dvalid))
     print(wce_preds)
     assert mean_absolute_error(wce_preds, preds) == 0.0
