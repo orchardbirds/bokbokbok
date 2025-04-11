@@ -6,6 +6,7 @@ from bokbokbok.eval_metrics.classification import WeightedCrossEntropyMetric
 from bokbokbok.utils import clip_sigmoid
 import lightgbm as lgb
 import xgboost as xgb
+import numpy as np
 
 
 def test_wce_lgb_implementation():
