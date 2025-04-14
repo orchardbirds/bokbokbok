@@ -33,7 +33,7 @@ def test_wce_lgb_implementation():
      "seed": 41114,
      "n_jobs": 8,
      "learning_rate": 0.1,
-     "objective": WeightedCrossEntropyLoss(alpha=alpha),
+     "objective": WeightedCrossEntropyLoss(alpha=alpha, library="LightGBM"),
      "early_stopping_rounds": 100
    }
 
@@ -41,7 +41,7 @@ def test_wce_lgb_implementation():
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=["train","valid"],
-                feval=WeightedCrossEntropyMetric(alpha=alpha),
+                feval=WeightedCrossEntropyMetric(alpha=alpha, library="LightGBM"),
                 )
 
 
@@ -64,9 +64,7 @@ def test_wce_lgb_implementation():
 
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
     preds = clf.predict(X_valid)
-    print(wce_preds)
-    print(preds)
-    assert mean_absolute_error(wce_preds, preds) == 0.1
+    assert mean_absolute_error(wce_preds, preds) == 0.0
 
 
 def test_wce_xgb_implementation():
