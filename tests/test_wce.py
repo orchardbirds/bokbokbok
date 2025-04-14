@@ -131,4 +131,4 @@ def test_wce_xgb_implementation():
     print(preds)
     print(wce_preds)
     print(clip_sigmoid(wce_preds))
-    assert np.allclose(wce_preds, preds, atol=1e-6)
+    assert mean_absolute_error(wce_preds, preds) == 0.0

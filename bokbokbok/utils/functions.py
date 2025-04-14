@@ -19,5 +19,7 @@ from scipy.special import expit
 #     yhat[yhat <= 0] = 1e-6
 #     return yhat
 
-def clip_sigmoid(yhat, eps=1e-15):
-    return np.clip(expit(yhat), eps, 1 - eps)
+def clip_sigmoid(yhat, eps=1e-15, library="XGBoost"):
+    if library == "XGBoost":
+        return np.clip(expit(yhat), eps, 1 - eps)
+    return np.clip(yhat, eps, 1 - eps)
