@@ -32,7 +32,7 @@ def test_focal_lgb_implementation():
      "seed": 41114,
      "n_jobs": 8,
      "learning_rate": 0.1,
-     "objective": WeightedFocalLoss(alpha=alpha, gamma=gamma),
+     "objective": WeightedFocalLoss(alpha=alpha, gamma=gamma, library="LightGBM"),
      "early_stopping_rounds": 100
    }
 
@@ -40,7 +40,7 @@ def test_focal_lgb_implementation():
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=["train","valid"],
-                feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
+                feval=WeightedFocalMetric(alpha=alpha, gamma=gamma, library="LightGBM"),
                 )
 
 
@@ -91,7 +91,7 @@ def test_focal_wce_comparison():
      "seed": 41114,
      "n_jobs": 8,
      "learning_rate": 0.1,
-     "objective": WeightedFocalLoss(alpha=alpha, gamma=gamma),
+     "objective": WeightedFocalLoss(alpha=alpha, gamma=gamma, library="LightGBM"),
      "early_stopping_rounds": 100
    }
 
@@ -99,7 +99,7 @@ def test_focal_wce_comparison():
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=["train","valid"],
-                feval=WeightedFocalMetric(alpha=alpha, gamma=gamma),
+                feval=WeightedFocalMetric(alpha=alpha, gamma=gamma, library="LightGBM"),
                 )
 
 
@@ -108,7 +108,7 @@ def test_focal_wce_comparison():
      "seed": 41114,
      "n_jobs": 8,
      "learning_rate": 0.1,
-     "objective": WeightedCrossEntropyLoss(alpha=alpha),
+     "objective": WeightedCrossEntropyLoss(alpha=alpha, library="LightGBM"),
      "early_stopping_rounds": 100
    }
 
@@ -116,7 +116,7 @@ def test_focal_wce_comparison():
                 train_set=train,
                 valid_sets=[train, valid],
                 valid_names=["train","valid"],
-                feval=WeightedCrossEntropyMetric(alpha=alpha),
+                feval=WeightedCrossEntropyMetric(alpha=alpha, library="LightGBM"),
                 )
 
     wfl_preds = clip_sigmoid(wfl_clf.predict(X_valid))
