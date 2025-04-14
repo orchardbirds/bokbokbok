@@ -69,7 +69,7 @@ def WeightedCrossEntropyLoss(alpha=0.5, library="XGBoost"):
             hess: Weighted cross-entropy Hessian
         """
 
-        yhat = clip_sigmoid(yhat)
+        yhat = np.clip(yhat, 1e-6, 1 - 1e-6)
         grad = _gradient(yhat, dtrain, alpha=alpha, library=library)
 
         hess = _hessian(yhat, dtrain, alpha=alpha, library=library)
