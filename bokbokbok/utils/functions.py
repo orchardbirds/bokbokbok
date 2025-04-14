@@ -20,6 +20,6 @@ from scipy.special import expit
 #     return yhat
 
 def clip_sigmoid(yhat, eps=1e-15, library="XGBoost"):
-    if library == "XGBoost":
+    if library != "XGBoost":
         return np.clip(expit(yhat), eps, 1 - eps)
     return np.clip(yhat, eps, 1 - eps)
