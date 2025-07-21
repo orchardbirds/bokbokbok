@@ -21,8 +21,6 @@ def test_wce_lgb_implementation():
                                                           test_size=0.25, 
                                                           random_state=41114)
 
-    alpha = 1.0
-
     train = lgb.Dataset(X_train, y_train)
     valid = lgb.Dataset(X_valid, y_valid, reference=train)
 
