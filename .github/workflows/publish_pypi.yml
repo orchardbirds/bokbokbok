@@ -13,18 +13,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+    - name: Install Poetry
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install poetry
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip poetry
-        poetry install setuptools wheel twine poetry
         poetry install --with dev
-    - name: Make sure unit tests succeed
+    - name: Build package
       run: |
-        poetry run pytest tests/
-    - name: Build package & publish to PyPi
+        poetry build
+    - name: Publish to PyPI
       env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        poetry run uv build
-        poetry run uv publish
+        poetry publish --username __token__ --password $POETRY_PYPI_TOKEN_PYPI
