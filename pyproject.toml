@@ -36,7 +36,7 @@ mkdocs-awesome-pages-plugin = "^2.10.1"
 mkdocs-minify-plugin = "^0.8.0"
 mknotebooks = "^0.8.0"
 mkdocs-print-site-plugin = "^2.7.2"
-mkdocstrings = { version = "^0.29.1, extras=["python"] }
+mkdocstrings = { version = "^0.29.1", extras=["python"] }
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
