@@ -8,25 +8,29 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
 
-    - name: Setup conda
-      uses: conda-incubator/setup-miniconda@v2
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        miniconda-version: "latest"
-        python-version: "3.7"
-        activate-environment: deploydocs
+        python-version: '3.11'
+
+    - name: Set up Poetry
+      uses: abatilo/actions-poetry@v3
+      with:
+        poetry-version: '2.0.0'  # Update to match your project
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade setuptools wheel twine
-        pip install ".[all]"
-        # In our docs, we need to output static images
-        # That requires additional setup
-        conda install --yes -c anaconda psutil 
-        conda install --yes -c plotly plotly-orca
-    - name: Deploy mkdocs site
+        poetry install --with dev
+
+    - name: Install additional tools (e.g., kaleido for static image export)
       run: |
-        mkdocs gh-deploy --force
+        poetry run pip install kaleido psutil
+
+    - name: Deploy MkDocs site
+      run: |
+        poetry run mkdocs gh-deploy --force
