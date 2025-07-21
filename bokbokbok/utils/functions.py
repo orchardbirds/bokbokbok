@@ -1,7 +1,9 @@
 import numpy as np
 
+from typing import Any
 
-def clip_sigmoid(yhat):
+# Typing needs to be made more specific for different matrices, but w/e
+def clip_sigmoid(yhat: Any) -> np.ndarray:
     """
     Applies the sigmoid function and ensures that the values lie in the range
     1e-15 < yhat < 1 - 1e-15.

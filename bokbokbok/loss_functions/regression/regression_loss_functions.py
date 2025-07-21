@@ -1,12 +1,16 @@
 import numpy as np
 
+from typing import Callable, TYPE_CHECKING
 
-def LogCoshLoss():
+if TYPE_CHECKING:
+    import xgboost as xgb
+
+def LogCoshLoss() -> Callable:
     """
     [Log Cosh Loss](https://openreview.net/pdf?id=rkglvsC9Ym) is an alternative to Mean Absolute Error.
     """
 
-    def _gradient(yhat, dtrain):
+    def _gradient(yhat: np.ndarray, dtrain: "xgb.DMatrix") -> np.ndarray:
         """Compute the log cosh gradient.
 
         Args:
@@ -20,7 +24,7 @@ def LogCoshLoss():
         y = dtrain.get_label()
         return -np.tanh(y - yhat)
 
-    def _hessian(yhat, dtrain):
+    def _hessian(yhat: np.ndarray, dtrain: "xgb.DMatrix") -> np.ndarray:
         """Compute the log cosh hessian.
 
         Args:
@@ -35,9 +39,9 @@ def LogCoshLoss():
         return 1. / np.power(np.cosh(y - yhat), 2)
 
     def log_cosh_loss(
-            yhat,
-            dtrain
-    ):
+            yhat: np.ndarray,
+            dtrain: "xgb.DMatrix"
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Calculate gradient and hessian for log cosh loss.
 
@@ -58,12 +62,12 @@ def LogCoshLoss():
     return log_cosh_loss
 
 
-def SPELoss():
+def SPELoss() -> Callable:
     """
     Squared Percentage Error loss
     """
 
-    def _gradient(yhat, dtrain):
+    def _gradient(yhat: np.ndarray, dtrain: "xgb.DMatrix") -> np.ndarray:
         """
         Compute the gradient squared percentage error.
         Args:
@@ -76,7 +80,7 @@ def SPELoss():
         y = dtrain.get_label()
         return -2*(y-yhat)/(y**2)
 
-    def _hessian(yhat, dtrain):
+    def _hessian(dtrain: "xgb.DMatrix") -> np.ndarray:
         """
         Compute the hessian for squared percentage error.
         Args:
@@ -89,7 +93,10 @@ def SPELoss():
         y = dtrain.get_label()
         return 2/(y**2)
 
-    def squared_percentage(yhat, dtrain):
+    def squared_percentage(
+        yhat: np.ndarray, 
+        dtrain: "xgb.DMatrix"
+        ) -> tuple[np.ndarray, np.ndarray]:
         """
         Calculate gradient and hessian for squared percentage error.
 
@@ -101,10 +108,9 @@ def SPELoss():
             grad: SPE loss gradient
             hess: SPE loss Hessian
         """
-        #yhat[yhat < -1] = -1 + 1e-6
         grad = _gradient(yhat, dtrain)
 
-        hess = _hessian(yhat, dtrain)
+        hess = _hessian(dtrain)
 
         return grad, hess
 

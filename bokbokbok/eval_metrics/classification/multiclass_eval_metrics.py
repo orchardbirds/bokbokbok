@@ -1,8 +1,11 @@
 from sklearn.metrics import cohen_kappa_score
 import numpy as np
+from typing import Callable, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    import xgboost as xgb
 
-def QuadraticWeightedKappaMetric(XGBoost=False):
+def QuadraticWeightedKappaMetric(XGBoost: bool = False) -> Callable:
     """
     Calculates the Weighted Cross Entropy Metric by applying a weighting factor alpha, allowing one to
     trade off recall and precision by up- or down-weighting the cost of a positive error relative to a
@@ -19,7 +22,10 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
     """
 
 
-    def quadratic_weighted_kappa_metric(yhat, dtrain, XGBoost=XGBoost):
+    def quadratic_weighted_kappa_metric(
+        yhat: np.ndarray,
+        dtrain: "xgb.DMatrix", 
+        XGBoost: bool = XGBoost) -> Union[tuple[str, float], tuple[str, float, bool]]:
         """
         Weighted Cross Entropy Metric.
 
@@ -35,7 +41,7 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
         y = dtrain.get_label()
         num_class = len(np.unique(dtrain.get_label()))
 
-        if XGBoost == False:
+        if not XGBoost:
             # LightGBM needs extra reshaping
             yhat = yhat.reshape(num_class, len(y)).T
         yhat = yhat.argmax(axis=1)
@@ -43,8 +49,8 @@ def QuadraticWeightedKappaMetric(XGBoost=False):
         qwk = cohen_kappa_score(y, yhat, weights="quadratic")
 
         if XGBoost:
-            return 'QWK', qwk
+            return "QWK", qwk
         else:
-            return 'QWK', qwk, True
+            return "QWK", qwk, True
 
     return quadratic_weighted_kappa_metric

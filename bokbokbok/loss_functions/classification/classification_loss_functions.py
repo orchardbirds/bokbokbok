@@ -1,8 +1,12 @@
 import numpy as np
 from bokbokbok.utils import clip_sigmoid
 
+from typing import Callable, TYPE_CHECKING
 
-def WeightedCrossEntropyLoss(alpha=0.5):
+if TYPE_CHECKING:
+    import xgboost as xgb
+
+def WeightedCrossEntropyLoss(alpha: float = 0.5) -> Callable:
     """
     Calculates the Weighted Cross-Entropy Loss, which applies a factor alpha, allowing one to
     trade off recall and precision by up- or down-weighting the cost of a positive error relative
@@ -12,7 +16,10 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     Conversely, setting alpha < 1 decreases the false positive count and increases the precision. 
     """
 
-    def _gradient(yhat, dtrain, alpha):
+    def _gradient(
+        yhat: np.ndarray, 
+        dtrain: "xgb.DMatrix", 
+        alpha: float) -> np.ndarray:
         """Compute the weighted cross-entropy gradient.
 
         Args:
@@ -31,7 +38,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
 
         return grad
 
-    def _hessian(yhat, dtrain, alpha):
+    def _hessian(yhat: np.ndarray, dtrain: "xgb.DMatrix", alpha: float) -> np.ndarray:
         """Compute the weighted cross-entropy hessian.
 
         Args:
@@ -50,10 +57,10 @@ def WeightedCrossEntropyLoss(alpha=0.5):
         return hess
 
     def weighted_cross_entropy(
-            yhat,
-            dtrain,
-            alpha=alpha
-    ):
+            yhat: np.ndarray,
+            dtrain: "xgb.DMatrix",
+            alpha: float = alpha
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Calculate gradient and hessian for weight cross-entropy,
 
@@ -75,7 +82,7 @@ def WeightedCrossEntropyLoss(alpha=0.5):
     return weighted_cross_entropy
 
 
-def WeightedFocalLoss(alpha=1.0, gamma=2.0):
+def WeightedFocalLoss(alpha: float = 1.0, gamma: float = 2.0) -> Callable:
     """
     Calculates the [Weighted Focal Loss.](https://arxiv.org/pdf/1708.02002.pdf)
 
@@ -89,7 +96,7 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
 
     """
 
-    def _gradient(yhat, dtrain, alpha, gamma):
+    def _gradient(yhat: np.ndarray, dtrain: "xgb.DMatrix", alpha: float, gamma: float) -> np.ndarray:
         """Compute the weighted focal gradient.
 
         Args:
@@ -112,7 +119,7 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
 
         return grad
 
-    def _hessian(yhat, dtrain, alpha, gamma):
+    def _hessian(yhat: np.ndarray, dtrain: "xgb.DMatrix", alpha: float, gamma: float) -> np.ndarray:
         """Compute the weighted focal hessian.
 
         Args:
@@ -138,10 +145,10 @@ def WeightedFocalLoss(alpha=1.0, gamma=2.0):
         return hess
 
     def focal_loss(
-            yhat,
-            dtrain,
-            alpha=alpha,
-            gamma=gamma):
+            yhat: np.ndarray,
+            dtrain: "xgb.DMatrix",
+            alpha: float = alpha,
+            gamma: float = gamma) -> tuple[np.ndarray, np.ndarray]:
         """
         Calculate gradient and hessian for Focal Loss,
 
