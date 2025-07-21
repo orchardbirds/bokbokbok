@@ -1,7 +1,7 @@
 import numpy as np
 from bokbokbok.utils import clip_sigmoid
 
-from typing import Callable, TYPE_CHECKING, Union
+from typing import Callable, TYPE_CHECKING
 
 if TYPE_CHECKING:
     import xgboost as xgb
