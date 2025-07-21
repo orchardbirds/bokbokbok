@@ -19,6 +19,11 @@ jobs:
         miniconda-version: "latest"
         python-version: "3.11"
         activate-environment: deploydocs
+    
+    - name: Install Poetry
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install poetry
 
     - name: Install dependencies
       run: |
