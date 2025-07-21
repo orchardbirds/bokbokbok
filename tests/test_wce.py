@@ -27,37 +27,36 @@ def test_wce_lgb_implementation():
     valid = lgb.Dataset(X_valid, y_valid, reference=train)
 
     params_wce = {
-     'n_estimators': 300,
-     'seed': 41114,
-     'n_jobs': 8,
-     'learning_rate': 0.1,
+     "n_estimators": 300,
+     "seed": 41114,
+     "n_jobs": 8,
+     "learning_rate": 0.1,
+     "early_stopping_rounds": 100,
+     "objective": WeightedCrossEntropyLoss(alpha=1.0)
    }
 
     wce_clf = lgb.train(params=params_wce,
                 train_set=train,
                 valid_sets=[train, valid],
-                valid_names=['train','valid'],
-                fobj=WeightedCrossEntropyLoss(alpha=1.0),
-                feval=WeightedCrossEntropyMetric(alpha=1.0),
-                early_stopping_rounds=100)
+                valid_names=["train", "valid"],
+                feval=WeightedCrossEntropyMetric(alpha=1.0))
 
 
     params = {
-        'n_estimators': 300,
-        'objective': 'cross_entropy',
-        'seed': 41114,
-        'n_jobs': 8,
-        'metric': 'cross_entropy',
-        'learning_rate': 0.1,
-        'boost_from_average': False
+        "n_estimators": 300,
+        "objective": "cross_entropy",
+        "seed": 41114,
+        "n_jobs": 8,
+        "metric": "cross_entropy",
+        "learning_rate": 0.1,
+        "boost_from_average": False,
+        "early_stopping_rounds": 100
     }
 
     clf = lgb.train(params=params,
                     train_set=train,
                     valid_sets=[train, valid],
-                    valid_names=['train','valid'],
-                    early_stopping_rounds=100)
-
+                    valid_names=["train", "valid"])
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
     preds = clf.predict(X_valid)
     assert mean_absolute_error(wce_preds, preds) == 0.0

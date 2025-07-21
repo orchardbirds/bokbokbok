@@ -15,16 +15,16 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade setuptools wheel twine
+        python3 -m pip install --upgrade pip poetry
+        poetry install setuptools wheel twine poetry
+        poetry install --with dev
     - name: Make sure unit tests succeed
       run: |
-        pip3 install ".[all]"
-        pytest
+        poetry run pytest tests/
     - name: Build package & publish to PyPi
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
+        poetry run uv build
+        poetry run uv publish

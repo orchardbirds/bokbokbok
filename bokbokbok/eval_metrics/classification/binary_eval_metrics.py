@@ -1,9 +1,14 @@
 import numpy as np
 from sklearn.metrics import f1_score
 from bokbokbok.utils import clip_sigmoid
+from typing import Any, Callable, TYPE_CHECKING, Union
 
-
-def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
+if TYPE_CHECKING:
+    import xgboost as xgb
+def WeightedCrossEntropyMetric(
+    alpha: float = 0.5, 
+    XGBoost: bool = False
+    ) -> Callable:
     """
     Calculates the Weighted Cross Entropy Metric by applying a weighting factor alpha, allowing one to
     trade off recall and precision by up- or down-weighting the cost of a positive error relative to a
@@ -20,7 +25,12 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
     """
 
 
-    def weighted_cross_entropy_metric(yhat, dtrain, alpha=alpha, XGBoost=XGBoost):
+    def weighted_cross_entropy_metric(
+        yhat: np.ndarray, 
+        dtrain: "xgb.DMatrix", 
+        alpha=alpha, 
+        XGBoost=XGBoost
+        ) -> Union[tuple[str, float], tuple[str, float, bool]]:
         """
         Weighted Cross Entropy Metric.
 
@@ -38,14 +48,18 @@ def WeightedCrossEntropyMetric(alpha=0.5, XGBoost=False):
         yhat = clip_sigmoid(yhat)
         elements = - alpha * y * np.log(yhat) - (1 - y) * np.log(1 - yhat)
         if XGBoost:
-            return f'WCE_alpha{alpha}', (np.sum(elements) / len(y))
+            return f"WCE_alpha{alpha}", (np.sum(elements) / len(y))
         else:
-            return f'WCE_alpha{alpha}', (np.sum(elements) / len(y)), False
+            return f"WCE_alpha{alpha}", (np.sum(elements) / len(y)), False
 
     return weighted_cross_entropy_metric
 
 
-def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
+def WeightedFocalMetric(
+    alpha: float = 1.0, 
+    gamma: float = 2.0, 
+    XGBoost: bool = False
+    ) -> Callable:
     """
     Implements [alpha-weighted Focal Loss](https://arxiv.org/pdf/1708.02002.pdf)
 
@@ -61,7 +75,12 @@ def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
                         Note that you should also set `maximize=False` in the XGBoost train function
     """
 
-    def focal_metric(yhat, dtrain, alpha=alpha, gamma=gamma, XGBoost=XGBoost):
+    def focal_metric(
+        yhat: np.ndarray, 
+        dtrain: "xgb.DMatrix", 
+        alpha: float = alpha, 
+        gamma: float = gamma, 
+        XGBoost: bool = XGBoost) -> Union[tuple[str, float], tuple[str, float, bool]]:
         """
         Weighted Focal Loss Metric.
 
@@ -90,7 +109,11 @@ def WeightedFocalMetric(alpha=1.0, gamma=2.0, XGBoost=False):
     return focal_metric
 
 
-def F1_Score_Binary(XGBoost=False, *args, **kwargs):
+def F1_Score_Binary(
+    XGBoost: bool = False,
+    *args: Any, 
+    **kwargs: Any,
+    ) -> Callable:
     """
     Implements the f1_score metric
     [from scikit learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn-metrics-f1-score)
@@ -101,7 +124,11 @@ def F1_Score_Binary(XGBoost=False, *args, **kwargs):
                         Note that you should also set `maximize=True` in the XGBoost train function
 
     """
-    def binary_f1_score(yhat, data, XGBoost=XGBoost):
+    def binary_f1_score(
+        yhat: np.ndarray, 
+        data: "xgb.DMatrix", 
+        XGBoost: bool = XGBoost
+        ) -> Union[tuple[str, Any], tuple[str, Any, bool]]: # needs better typing for f1 but I don't care
         """
         F1 Score.
 
@@ -116,8 +143,8 @@ def F1_Score_Binary(XGBoost=False, *args, **kwargs):
         y_true = data.get_label()
         yhat = np.round(yhat)
         if XGBoost:
-            return 'F1', f1_score(y_true, yhat, *args, **kwargs)
+            return "F1", f1_score(y_true, yhat, *args, **kwargs)
         else:
-            return 'F1', f1_score(y_true, yhat, *args, **kwargs), True
+            return "F1", f1_score(y_true, yhat, *args, **kwargs), True
 
     return binary_f1_score
