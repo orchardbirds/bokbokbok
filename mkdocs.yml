@@ -35,21 +35,16 @@ nav:
 plugins:
   - mkdocstrings:
       handlers:
-          python:
-            selection:
-              inherited_members: true
-              filters:
-                - "!^Base"
-                - "!^_"  # exlude all members starting with _
-                - "^__init__$"  # but always include __init__ modules and methods
-            rendering:
-              show_root_toc_entry: false
+        python:
+          options:
+            show_root_toc_entry: false
       watch:
         - bokbokbok
   - search
   - mknotebooks:
       enable_default_jupyter_cell_styling: true
       enable_default_pandas_dataframe_styling: true
+
 
 copyright: Copyright &copy; 2020
 
