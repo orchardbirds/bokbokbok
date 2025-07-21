@@ -35,7 +35,6 @@ mkdocs-enumerate-headings-plugin = "^0.6.2"
 mkdocs-awesome-pages-plugin = "^2.10.1"
 mkdocs-minify-plugin = "^0.8.0"
 mknotebooks = "^0.8.0"
-mkdocstrings = "^0.29.1"
 mkdocs-print-site-plugin = "^2.7.2"
 mkdocstrings = {version = "^1.13.0", extras=["python"] }
 
