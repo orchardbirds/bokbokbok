@@ -16,12 +16,9 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
-
-    - name: Set up Poetry
-      uses: abatilo/actions-poetry@v3
-      with:
-        poetry-version: '2.0.0'  # Update to match your project
+        miniconda-version: "latest"
+        python-version: "3.11"
+        activate-environment: deploydocs
 
     - name: Install dependencies
       run: |
