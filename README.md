@@ -30,6 +30,3 @@ pip install bokbokbok
 
 The documentation can [be found here.](https://orchardbirds.github.io/bokbokbok/)
 
-## Contributing
-
-To learn more about making a contribution to bokbokbok, please see [CONTRIBUTING.md.](https://github.com/orchardbirds/bokbokbok/blob/main/CONTRIBUTING.md)
