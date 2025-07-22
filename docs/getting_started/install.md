@@ -13,5 +13,5 @@ Alternatively you can fork/clone and run:
 ```bash
 git clone https://gitlab.com/orchardbirds/bokbokbok.git
 cd bokbokbok
-pip install .
+poetry install .
 ```
