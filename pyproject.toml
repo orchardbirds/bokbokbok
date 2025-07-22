@@ -1,6 +1,6 @@
 [project]
 name = "bokbokbok"
-version = "1.0.3"
+version = "1.0.4"
 description = "Custom Losses and Metrics for XGBoost, LightGBM"
 authors = [
     {name = "Daniel Timbrell",email = "dantimbrell@gmail.com"}
