@@ -8,10 +8,19 @@ authors = [
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11"
+keywords = ["xgboost", "lightgbm", "loss functions", "custom loss", "machine learning"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Intended Audience :: Science/Research",
+]
 dependencies = [
-    "numpy (>=2.2.4,<3.0.0)",
-    "scikit-learn (>=1.6.1,<2.0.0)",
-    "scipy (>=1.15.2,<2.0.0)",
+    "numpy>=2.2.4,<3.0.0",
+    "scikit-learn>=1.6.1,<2.0.0",
+    "scipy>=1.15.2,<2.0.0",
 ]
 
 [project.urls]
