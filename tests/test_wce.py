@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
@@ -57,4 +58,4 @@ def test_wce_lgb_implementation():
                     valid_names=["train", "valid"])
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
     preds = clf.predict(X_valid)
-    assert mean_absolute_error(wce_preds, preds) == 0.0
+    assert np.isclose(mean_absolute_error(wce_preds, preds), 0.0)
