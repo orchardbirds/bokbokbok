@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
@@ -62,7 +63,7 @@ def test_focal_lgb_implementation():
 
     wfl_preds = clip_sigmoid(wfl_clf.predict(X_valid))
     preds = clf.predict(X_valid)
-    assert mean_absolute_error(wfl_preds, preds) == 0.0
+    assert np.isclose(mean_absolute_error(wfl_preds, preds), 0.0)
 
 
 def test_focal_wce_comparison():
@@ -118,4 +119,4 @@ def test_focal_wce_comparison():
 
     wfl_preds = clip_sigmoid(wfl_clf.predict(X_valid))
     wce_preds = clip_sigmoid(wce_clf.predict(X_valid))
-    assert mean_absolute_error(wfl_preds, wce_preds) == 0.0
+    assert np.isclose(mean_absolute_error(wfl_preds, wce_preds), 0.0)
